@@ -14,10 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.statusBarStyle = .lightContent
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: MainMenuViewController())
+        let navController = UINavigationController(rootViewController: MainMenuViewController())
+        navController.navigationBar.backgroundColor = UIColor.blue
+        window?.rootViewController = navController
+        
+        
+        
         return true
     }
 
