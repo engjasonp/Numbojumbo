@@ -13,6 +13,9 @@
 		CAD967DC1F0B1AC7006F0745 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAD967DB1F0B1AC7006F0745 /* Assets.xcassets */; };
 		CAD967DF1F0B1AC7006F0745 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAD967DD1F0B1AC7006F0745 /* LaunchScreen.storyboard */; };
 		CAD967E71F0B1D25006F0745 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD967E61F0B1D25006F0745 /* MainMenuViewController.swift */; };
+		CAD967EC1F159C5D006F0745 /* numberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD967EA1F159C5D006F0745 /* numberCell.swift */; };
+		CAD967ED1F159C5D006F0745 /* numberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD967EB1F159C5D006F0745 /* numberCell.xib */; };
+		CAD967EF1F159DE1006F0745 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD967EE1F159DE1006F0745 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		CAD967DE1F0B1AC7006F0745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAD967E01F0B1AC7006F0745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD967E61F0B1D25006F0745 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		CAD967EA1F159C5D006F0745 /* numberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = numberCell.swift; path = ../numberCell.swift; sourceTree = "<group>"; };
+		CAD967EB1F159C5D006F0745 /* numberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = numberCell.xib; path = ../numberCell.xib; sourceTree = "<group>"; };
+		CAD967EE1F159DE1006F0745 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +65,10 @@
 				CAD967D41F0B1AC7006F0745 /* AppDelegate.swift */,
 				CAD967E61F0B1D25006F0745 /* MainMenuViewController.swift */,
 				CAD967D61F0B1AC7006F0745 /* GameViewController.swift */,
+				CAD967EE1F159DE1006F0745 /* Game.swift */,
+				CAD967EA1F159C5D006F0745 /* numberCell.swift */,
 				CAD967D81F0B1AC7006F0745 /* Main.storyboard */,
+				CAD967EB1F159C5D006F0745 /* numberCell.xib */,
 				CAD967DB1F0B1AC7006F0745 /* Assets.xcassets */,
 				CAD967DD1F0B1AC7006F0745 /* LaunchScreen.storyboard */,
 				CAD967E01F0B1AC7006F0745 /* Info.plist */,
@@ -127,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD967ED1F159C5D006F0745 /* numberCell.xib in Resources */,
 				CAD967DF1F0B1AC7006F0745 /* LaunchScreen.storyboard in Resources */,
 				CAD967DC1F0B1AC7006F0745 /* Assets.xcassets in Resources */,
 				CAD967DA1F0B1AC7006F0745 /* Main.storyboard in Resources */,
@@ -140,6 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD967EC1F159C5D006F0745 /* numberCell.swift in Sources */,
+				CAD967EF1F159DE1006F0745 /* Game.swift in Sources */,
 				CAD967E71F0B1D25006F0745 /* MainMenuViewController.swift in Sources */,
 				CAD967D71F0B1AC7006F0745 /* GameViewController.swift in Sources */,
 				CAD967D51F0B1AC7006F0745 /* AppDelegate.swift in Sources */,
