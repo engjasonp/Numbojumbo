@@ -22,6 +22,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var numCellsPerRow = 2
     var numArr: [Int] = []
+    var selectedCell = [IndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         let nib = UINib(nibName: "numberCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     func quitGame() {
@@ -69,12 +71,37 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
         cell.numLabel.text = "\(numArr[indexPath.row])"
         
+        if selectedCell.contains(indexPath) {
+            cell.contentView.backgroundColor = .green
+        }
+        else {
+            cell.contentView.backgroundColor = .white
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // flip animation or color change
         print("\(game.numArray[indexPath.row])")
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
+        
+        //cell.toggleSelectedState()
+        selectedCell.append(indexPath)
+        cell.contentView.backgroundColor = .red
+        self.collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
+        //cell.toggleSelectedState()
+        if selectedCell.contains(indexPath) {
+            selectedCell.remove(at: selectedCell.index(of: indexPath)!)
+            cell.contentView.backgroundColor = .white
+        }
+        collectionView.reloadData()
     }
     
     func setCollectionViewLayout(_ layout: UICollectionViewLayout, animated: Bool, completion: ((Bool) -> Void)? = nil) {
