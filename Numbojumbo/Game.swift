@@ -23,10 +23,10 @@ class Game {
     
     func start() {
         gameIsOver = false
-        populateArrayWithRandomNums()
+        numArray = populateArrayWithRandomNums()
     }
     
-    func populateArrayWithRandomNums() {
+    func populateArrayWithRandomNums() -> [Int] {
         let totalSquares = 4
         for _ in 1...totalSquares {
             var randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(51)) : (-1) * Int(arc4random_uniform(51))
@@ -37,6 +37,7 @@ class Game {
             numArray.append(randomNum)
         }
         print(numArray)
+        return numArray
     }
     
     func generateNumberForTitle(){

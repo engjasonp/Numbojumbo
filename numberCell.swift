@@ -18,9 +18,9 @@ class numberCell: UICollectionViewCell {
         self.backgroundColor = UIColor.green
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.white.cgColor
-        let game = Game()
+        //let game = Game()
         
-        numLabel.text = String(describing: game.numArray.popLast())
+        //numLabel.text = String(describing: game.numArray.popLast())
     }
 
 }

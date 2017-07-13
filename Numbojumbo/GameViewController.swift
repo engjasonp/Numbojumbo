@@ -8,78 +8,38 @@
 
 import UIKit
 
-class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-//    var statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
+    var statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
+    var navBarHeight: CGFloat?
     
     @IBOutlet weak var gameContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let itemsPerRow = 2
+    let reuseIdentifier = "numberCell"
+    let game = Game()
+    
     var numCellsPerRow = 2
+    var numArr: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.edgesForExtendedLayout = []
+        navBarHeight = self.navigationController?.navigationBar.frame.height
+        
+        self.edgesForExtendedLayout = []
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Quit", style: .plain, target: self, action: #selector(quitGame))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitButtonPressed))
+        
+        game.start()
+        numArr = game.numArray
         
         let nib = UINib(nibName: "numberCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.dataSource = self
     }
     
-    func handleTap(tap: UITapGestureRecognizer) {
-        let location = tap.location(in: view)
-        let width = gameContainerView.frame.width / CGFloat(numCellsPerRow)
-        
-        let i = Int(location.x / width)
-        let j = Int(location.y / width)
-        print(i, j)
-    }
-    
-//    func setUpCell(row: Int, column: Int, cellWidth: CGFloat, cellHeight: CGFloat) {
-//        let cell = UIView()
-//        cell.backgroundColor = UIColor().randomColor() //.blue
-//        cell.frame = CGRect(
-//            x: CGFloat(column) * cellWidth,
-//            y: CGFloat(row) * cellHeight,
-//            width: cellWidth,
-//            height: cellHeight
-//        )
-//        cell.layer.borderWidth = 0.5
-//        cell.layer.borderColor = UIColor.white.cgColor
-//        
-//        gameContainerView.addSubview(cell)
-//        setUpCellLabel(row: row, column: column, cellWidth: cellWidth, cellHeight: cellHeight)
-//    }
-//    
-//    func setUpCellLabel(row: Int, column: Int, cellWidth: CGFloat, cellHeight: CGFloat) {
-//        let numLabel = UILabel()
-//        numLabel.frame = CGRect(
-//            x: CGFloat(column) * cellWidth,
-//            y: CGFloat(row) * cellHeight,
-//            width: cellWidth,
-//            height: cellHeight
-//        )
-//        
-//        numLabel.text = String(describing: numArray.popLast()!)
-//        numLabel.font = UIFont.boldSystemFont(ofSize: 20)
-//        numLabel.textColor = .white
-//        numLabel.textAlignment = .center
-//        numLabel.isUserInteractionEnabled = true
-//        numLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(printValue)))
-//        
-//        gameContainerView.addSubview(numLabel)
-//    }
-    
-    func printValue(sender: UITapGestureRecognizer) {
-        guard let a = (sender.view as? UILabel)?.text else {
-            return
-        }
-        print(a)
-    }
-
     func quitGame() {
         // present alert controller pop-up message
         let ac = UIAlertController()
@@ -95,37 +55,41 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    // UICollectionViewDelegate
-    
-    let itemsPerRow = 2
-    let reuseIdentifier = "numberCell"
+    // UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return numArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
+        cell.numLabel.text = "\(numArr[indexPath.row])"
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = view.frame.width / CGFloat(itemsPerRow)
-        let height = view.frame.height / CGFloat(itemsPerRow)
-        return CGSize(width: width, height: height)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // flip animation or color change
-        print("cell selected!")
+        print("\(game.numArray[indexPath.row])")
     }
     
-
+    func setCollectionViewLayout(_ layout: UICollectionViewLayout, animated: Bool, completion: ((Bool) -> Void)? = nil) {
+        // call to animate changes in collectionview layout
+    }
+    
+    
+    // MARK: - UICollectionViewFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width / CGFloat(itemsPerRow)
+        let height = (self.view.frame.height) / CGFloat(itemsPerRow)
+        
+        return CGSize(width: width, height: height)
+    }
 }
 
 extension UIColor {

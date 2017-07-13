@@ -43,8 +43,6 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
         print("Game started!")
-        let game = Game()
-        game.start()
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
