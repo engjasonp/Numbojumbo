@@ -21,8 +21,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     let game = Game()
     
     var numCellsPerRow = 2
-    var numArr: [Int] = []
-    var selectedCell = [IndexPath]()
+    var numArr = [Int]()
+    var selectedCells = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +71,10 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
         cell.numLabel.text = "\(numArr[indexPath.row])"
         
-        if selectedCell.contains(indexPath) {
-            cell.contentView.backgroundColor = .green
-        }
-        else {
-            cell.contentView.backgroundColor = .white
+        if selectedCells.contains(indexPath.row) {
+            cell.backgroundColor = UIColor.cyan
+        } else {
+            cell.backgroundColor = UIColor.yellow
         }
         
         return cell
@@ -85,22 +84,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         // flip animation or color change
         print("\(game.numArray[indexPath.row])")
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
-        
-        //cell.toggleSelectedState()
-        selectedCell.append(indexPath)
-        cell.contentView.backgroundColor = .red
-        self.collectionView.deselectItem(at: indexPath, animated: true)
-        collectionView.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
-        //cell.toggleSelectedState()
-        if selectedCell.contains(indexPath) {
-            selectedCell.remove(at: selectedCell.index(of: indexPath)!)
-            cell.contentView.backgroundColor = .white
+        if selectedCells.contains(indexPath.row) {
+            let index = selectedCells.index(of: indexPath.row)
+            selectedCells.remove(at: index!)
+        } else {
+            selectedCells.append(indexPath.row)
         }
+        
         collectionView.reloadData()
     }
     
