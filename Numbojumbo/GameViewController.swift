@@ -9,10 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    var statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
-    var navBarHeight: CGFloat?
-    
+
     @IBOutlet weak var gameContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,14 +24,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBarHeight = self.navigationController?.navigationBar.frame.height
-        
         self.edgesForExtendedLayout = []
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Quit", style: .plain, target: self, action: #selector(quitGame))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitButtonPressed))
         
         game.start()
         numArr = game.numArray
+        title = game.generateNumberForTitle(numArray: numArr)
         
         let nib = UINib(nibName: "numberCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)

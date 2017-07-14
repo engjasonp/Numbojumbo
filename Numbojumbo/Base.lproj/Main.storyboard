@@ -152,10 +152,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FQY-BS-py1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IPc-d2-Y1d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IPc-d2-Y1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.40385079089506182" green="0.63589766658382663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
