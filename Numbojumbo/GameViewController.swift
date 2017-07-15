@@ -20,6 +20,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     var numCellsPerRow = 2
     var numArr = [Int]()
     var selectedCells = [Int]()
+    var selectedTotal = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
     }
     
     func quitGame() {
@@ -72,30 +74,33 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else {
             cell.backgroundColor = UIColor.yellow
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // flip animation or color change
         print("\(game.numArray[indexPath.row])")
-        
         if selectedCells.contains(indexPath.row) {
             let index = selectedCells.index(of: indexPath.row)
+            selectedTotal = selectedTotal - numArr[indexPath.row]
             selectedCells.remove(at: index!)
+            print("Selected Total: \(selectedTotal)")
         } else {
             selectedCells.append(indexPath.row)
+            selectedTotal = selectedTotal + numArr[indexPath.row]
+            
+            
+            print("Selected Total: \(selectedTotal)")
         }
         
         collectionView.reloadData()
     }
     
+    // MARK: - UICollectionViewFlowLayout
+    
     func setCollectionViewLayout(_ layout: UICollectionViewLayout, animated: Bool, completion: ((Bool) -> Void)? = nil) {
         // call to animate changes in collectionview layout
     }
-    
-    
-    // MARK: - UICollectionViewFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width / CGFloat(itemsPerRow)
