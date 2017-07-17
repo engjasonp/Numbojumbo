@@ -17,7 +17,7 @@ class numberCell: UICollectionViewCell {
 
         self.backgroundColor = UIColor.green
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = UIColor.white.cgColor
         numLabel.textColor = UIColor.red
     }
 

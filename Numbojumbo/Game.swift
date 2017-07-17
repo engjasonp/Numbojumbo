@@ -15,15 +15,18 @@ class Game {
         return arr
     }()
     
-//    var numForTitle: String?
+    var numForTitle: String?
     var gameIsOver: Bool?
-    
-    var level = 0
-    var score = 0
+    var sum: Int?
+    var level: Int?
+    var score: Int?
+    var numArr: [Int]?
     
     func start() {
         gameIsOver = false
         numArray = populateArrayWithRandomNums()
+        level = 0
+        score = 0
     }
     
     func populateArrayWithRandomNums() -> [Int] {
@@ -40,28 +43,36 @@ class Game {
         return numArray
     }
     
-    func generateNumberForTitle(numArray: [Int]) -> String{
+    func generateNumberForTitle(numArray: [Int]) {
         // to be called when navbar loads
         // take sum of 2 nums from numArray
-        var arr = numArray
+        numArr = numArray
         
-        if arr.count > 1 {
-            let randomIndexValue1 = Int(arc4random_uniform(UInt32(arr.count)))
-            let num1 = arr.remove(at: randomIndexValue1)
-            let randomIndexValue2 = Int(arc4random_uniform(UInt32(arr.count)))
-            let num2 = arr.remove(at: randomIndexValue2)
-            let sum = num1 + num2
-            return String(sum)
+        if numArr!.count > 1 {
+            let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArr!.count)))
+            let num1 = numArr!.remove(at: randomIndexValue1)
+            let randomIndexValue2 = Int(arc4random_uniform(UInt32(numArr!.count)))
+            let num2 = numArr!.remove(at: randomIndexValue2)
+            sum = num1 + num2
+            numForTitle = String(sum!)
+        } else if numArr!.count == 1 {
+            sum = numArr![0]
+            numForTitle = String(sum!)
         } else {
-            return String(arr[0])
+            nextLevel()
         }
     }
     
-    func evaluateSubmission() {
-        // code to be called when user pressed submitButton 
+    func evaluateSubmission(num: Int) -> Bool {
+        // code to be called when user pressed submitButton
+        if num == sum {
+            print("valid submission!")
+            return true
+        }
+        return false
     }
     
     func nextLevel() {
-        
+        print("Level passed! Commence next level")
     }
 }
