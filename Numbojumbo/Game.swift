@@ -15,21 +15,26 @@ class Game {
         return arr
     }()
     
+    var level: Int
+    var score: Int
+
     var numForTitle: String?
-    var gameIsOver: Bool?
-    var sum: Int?
-    var level: Int?
-    var score: Int?
-    var numArr: [Int]?
     
-    func start() {
-        gameIsOver = false
-        numArray = populateArrayWithRandomNums()
-        level = 0
-        score = 0
+    var submissionIsValid: Bool
+    var gameIsOver: Bool
+    
+    init() {
+        self.level = 0
+        self.score = 0
+        self.gameIsOver = false
+        self.submissionIsValid = false
     }
     
-    func populateArrayWithRandomNums() -> [Int] {
+    func start() {
+        populateArrayWithRandomNums()
+    }
+    
+    func populateArrayWithRandomNums() {
         let totalSquares = 4
         for _ in 1...totalSquares {
             var randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(51)) : (-1) * Int(arc4random_uniform(51))
@@ -40,39 +45,39 @@ class Game {
             numArray.append(randomNum)
         }
         print(numArray)
-        return numArray
     }
     
-    func generateNumberForTitle(numArray: [Int]) {
+    func generateNumberForTitle() {
         // to be called when navbar loads
         // take sum of 2 nums from numArray
-        numArr = numArray
         
-        if numArr!.count > 1 {
-            let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArr!.count)))
-            let num1 = numArr!.remove(at: randomIndexValue1)
-            let randomIndexValue2 = Int(arc4random_uniform(UInt32(numArr!.count)))
-            let num2 = numArr!.remove(at: randomIndexValue2)
-            sum = num1 + num2
-            numForTitle = String(sum!)
-        } else if numArr!.count == 1 {
-            sum = numArr![0]
-            numForTitle = String(sum!)
-        } else {
-            nextLevel()
+        if numArray.count > 1 {
+            let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArray.count)))
+            let num1 = numArray.remove(at: randomIndexValue1)
+            let randomIndexValue2 = Int(arc4random_uniform(UInt32(numArray.count)))
+            let num2 = numArray.remove(at: randomIndexValue2)
+            let sum = num1 + num2
+            numForTitle = String(sum)
+        } else if numArray.count == 1 {
+            numForTitle = String(numArray[0])
         }
     }
     
-    func evaluateSubmission(num: Int) -> Bool {
+    func evaluateSubmission(num: Int) {
         // code to be called when user pressed submitButton
-        if num == sum {
+        if num == Int(numForTitle!) {
             print("valid submission!")
-            return true
+            submissionIsValid = true
+            if numArray.count == 0 {
+                nextLevel()
+            }
+        } else {
+            print("invalid submission!")
+            submissionIsValid = false
         }
-        return false
     }
     
     func nextLevel() {
-        print("Level passed! Commence next level")
+        level = level + 1
     }
 }

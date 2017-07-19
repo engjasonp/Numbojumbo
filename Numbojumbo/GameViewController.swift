@@ -13,15 +13,16 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var gameContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let game = Game()
     let itemsPerRow = 2
     let reuseIdentifier = "numberCell"
-    let game = Game()
     
-    var numCellsPerRow = 2
+    var selectedTotalValue = 0
+    
     var numArr = [Int]()
     var selectedCells = [IndexPath]()
-    var selectedTotalValue = 0
     var submittedCells = [IndexPath]()
+    
     var submitButtonWasPressed = false
     
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         game.start()
         numArr = game.numArray
-        game.generateNumberForTitle(numArray: numArr)
+        game.generateNumberForTitle()
         title = game.numForTitle
         
         let nib = UINib(nibName: "numberCell", bundle: nil)
@@ -55,7 +56,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func submitButtonPressed() {
-        if game.evaluateSubmission(num: selectedTotalValue) {
+        game.evaluateSubmission(num: selectedTotalValue)
+        if game.submissionIsValid {
             for i in 0..<selectedCells.count {
                 if !submittedCells.contains(selectedCells[i]) {
                     submittedCells.append(selectedCells[i])
@@ -65,10 +67,22 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             collectionView.reloadData()
             selectedTotalValue = 0
             
-            game.generateNumberForTitle(numArray: game.numArr!)
+            game.generateNumberForTitle()
             title = game.numForTitle
+            
+            if game.level == 1 {
+                let ac = UIAlertController(title: "Good job!", message: "Level passed! Commence next level.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                ac.addAction(okAction)
+                present(ac, animated: true, completion: nil)
+            }
+            
         } else {
-            print("invalid submission!")
+            let ac = UIAlertController(title: "Incorrect!", message: "Submission invalid!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            ac.addAction(okAction)
+            present(ac, animated: true, completion: nil)
+
         }
     }
     
