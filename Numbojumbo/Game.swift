@@ -23,7 +23,7 @@ class Game {
         self.level = 0
         self.finalLevel = 1
         self.score = 0
-        self.numSquaresPerRow = 2
+        self.numSquaresPerRow = 4
         self.numArray = []
         self.numArrayCopy = []
     }
@@ -38,15 +38,16 @@ class Game {
     }
     
     func populateArrayWithRandomNums() {
-        // called when starting a level
-        // creates populates an array with random numbers up until number of total squares
+        // called when starting a new level
+        // creates populates an array with non-zero random numbers up until number of total squares
+        // guarantees no duplicate numbers in array
         
         numArray.removeAll()
         let totalSquares = Int(pow(Double((numSquaresPerRow)), 2.0))
         for _ in 0..<totalSquares {
-            var randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(51)) : (-1) * Int(arc4random_uniform(51))
+            var randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(10)) : (-1) * Int(arc4random_uniform(10))
             while numArray.contains(randomNum) || randomNum == 0 {
-                randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(51)) : (-1) * Int(arc4random_uniform(51))
+                randomNum = drand48() >= 0.5 ? Int(arc4random_uniform(10)) : (-1) * Int(arc4random_uniform(10))
             }
             numArray.append(randomNum)
         }
@@ -59,15 +60,23 @@ class Game {
         // called when submit button tapped
         // take sum of 2 nums from numArr unless there's only 1 number left
         
+        // generate a combo of numbers from array
+        // whatever numbers user selects to add up to answer: remove all those values from array
+        
         print("numArrayCopy: \(numArrayCopy)")
         
         if numArrayCopy.count > 1 {
             let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
-            let num1 = numArrayCopy.remove(at: randomIndexValue1)
-            let randomIndexValue2 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
-            let num2 = numArrayCopy.remove(at: randomIndexValue2)
+            let num1 = numArrayCopy[numArrayCopy.index(randomIndexValue1, offsetBy: 0)]
+            var randomIndexValue2 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
+            while randomIndexValue2 == randomIndexValue1 {
+                randomIndexValue2 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
+            }
+            let num2 = numArrayCopy[numArrayCopy.index(randomIndexValue2, offsetBy: 0)]
+            
             print("num1: \(num1)")
             print("num2: \(num2)")
+            
             let sum = num1 + num2
             numForTitle = String(sum)
         } else if numArrayCopy.count == 1 {
@@ -76,7 +85,7 @@ class Game {
     }
     
     func nextLevel() {
-        numSquaresPerRow += 1
+        numSquaresPerRow += 2
         populateArrayWithRandomNums()
         numArrayCopy = numArray
         level += 1

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FQY-BS-py1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FQY-BS-py1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,13 +22,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-82-Xnk" userLabel="Game Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMw-kf-OD6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TUa-Ja-AU1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCB-2i-sL9">
+                                        <rect key="frame" x="123" y="10" width="130" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="gF3-ry-2Yo"/>
+                                            <constraint firstAttribute="height" constant="40" id="yyo-Eq-Jp3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="OCB-2i-sL9" firstAttribute="top" secondItem="wMw-kf-OD6" secondAttribute="top" constant="10" id="hZf-d8-4xR"/>
+                                    <constraint firstItem="OCB-2i-sL9" firstAttribute="centerX" secondItem="wMw-kf-OD6" secondAttribute="centerX" id="roE-tD-0hG"/>
+                                    <constraint firstItem="OCB-2i-sL9" firstAttribute="centerY" secondItem="wMw-kf-OD6" secondAttribute="centerY" id="xPx-Is-l0s"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-82-Xnk" userLabel="Game Container View">
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TUa-Ja-AU1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="QaW-E2-ZJJ">
                                             <size key="itemSize" width="117" height="118"/>
@@ -53,8 +72,24 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="TUa-Ja-AU1" firstAttribute="top" secondItem="HLa-82-Xnk" secondAttribute="top" id="HzK-pn-05B"/>
+                                    <constraint firstItem="TUa-Ja-AU1" firstAttribute="leading" secondItem="HLa-82-Xnk" secondAttribute="leading" id="Xpi-Eu-bS9"/>
+                                    <constraint firstAttribute="trailing" secondItem="TUa-Ja-AU1" secondAttribute="trailing" id="doY-St-Odn"/>
+                                    <constraint firstAttribute="bottom" secondItem="TUa-Ja-AU1" secondAttribute="bottom" id="u0r-RV-UaU"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wMw-kf-OD6" secondAttribute="trailing" id="2fc-ZF-Eav"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HLa-82-Xnk" secondAttribute="trailing" constant="-16" id="7Cw-fI-yW1"/>
+                            <constraint firstItem="HLa-82-Xnk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="D5B-N5-eY3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HLa-82-Xnk" secondAttribute="bottom" id="SLg-56-Gym"/>
+                            <constraint firstItem="wMw-kf-OD6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ybu-yX-sEg"/>
+                            <constraint firstItem="HLa-82-Xnk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gOg-mr-54B"/>
+                            <constraint firstItem="wMw-kf-OD6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hG1-KT-OBq"/>
+                            <constraint firstItem="HLa-82-Xnk" firstAttribute="top" secondItem="wMw-kf-OD6" secondAttribute="bottom" id="wYq-Pr-KPc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Plm-Sy-vEj"/>
                     <connections>
@@ -152,7 +187,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FQY-BS-py1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IPc-d2-Y1d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IPc-d2-Y1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.40385079089506182" green="0.63589766658382663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

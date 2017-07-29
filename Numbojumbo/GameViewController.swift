@@ -42,6 +42,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
+        
+        let timer = Timer()
     }
     
     func quitGame() {
@@ -63,6 +65,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             for i in 0..<selectedCells.count {
                 if !submittedCells.contains(selectedCells[i]) {
                     submittedCells.append(selectedCells[i])
+                    
+                    game.numArrayCopy.remove(at: game.numArrayCopy.index(of: game.numArray[selectedCells[i].row])!)
+                    
                 }
             }
             
@@ -73,7 +78,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             print("game.finalLevel: \(game.finalLevel)")
             
             if game.score == numArr.count { // if you passed a level
-                
                 selectedCells.removeAll()
                 submittedCells.removeAll()
                 
@@ -92,7 +96,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let ac = UIAlertController(title: "Congrats!", message: "You beat the game! Try again?", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                         self.game.start()
+                        self.selectedTotalValue = 0
+                        print("Selected Total: \(self.selectedTotalValue)")
+                        
+                        self.game.generateNumberForTitle()
+                        self.title = self.game.numForTitle
                         self.collectionView.reloadData()
+                        self.numArr = self.game.numArray
                     })
                     ac.addAction(okAction)
                     present(ac, animated: true, completion: nil)
@@ -101,6 +111,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             
             selectedTotalValue = 0
+            print("Selected Total: \(selectedTotalValue)")
             
             game.generateNumberForTitle()
             title = game.numForTitle
@@ -112,57 +123,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             ac.addAction(okAction)
             present(ac, animated: true, completion: nil)
-            return
         }
-        
-
-        
-        
-        /*game.evaluateSubmission(num: selectedTotalValue)
-        if game.submissionIsValid {
-            for i in 0..<selectedCells.count {
-                if !submittedCells.contains(selectedCells[i]) {
-                    submittedCells.append(selectedCells[i])
-                }
-            }
-            
-            if game.level == 1 {
-                let ac = UIAlertController(title: "Good job!", message: "Level passed! Commence next level.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                ac.addAction(okAction)
-                present(ac, animated: true, completion: nil)
-                
-                numArr = game.numArray
-                selectedCells.removeAll()
-                submittedCells.removeAll()
-                
-                collectionView.reloadData()
-            }
-            
-            else if game.level == 2 {
-                let ac = UIAlertController(title: "Congrats!", message: "Level passed! You beat the game! Try again?", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                    self.game.start()
-                })
-                ac.addAction(okAction)
-                present(ac, animated: true, completion: nil)
-            }
-            
-            selectedCells.removeAll()
-            collectionView.reloadData()
-            selectedTotalValue = 0
-            
-            print("level: \(game.level)")
-            game.generateNumberForTitle()
-            title = game.numForTitle
-            
-        } else {
-            let ac = UIAlertController(title: "Incorrect!", message: "Submission invalid!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            ac.addAction(okAction)
-            present(ac, animated: true, completion: nil)
-
-        }*/
     }
     
     // UICollectionViewDataSource
@@ -218,7 +179,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         itemsPerRow = game.numSquaresPerRow
-        let width = collectionView.frame.size.width / CGFloat(itemsPerRow)
+        let width = gameContainerView.frame.size.width / CGFloat(itemsPerRow)
         let height = (self.view.frame.height) / CGFloat(itemsPerRow)
         
         return CGSize(width: width, height: height)
