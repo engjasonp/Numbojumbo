@@ -12,6 +12,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var gameContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var timerLabel: UILabel!
     
     let game = Game()
     let reuseIdentifier = "numberCell"
@@ -23,6 +24,11 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     var selectedCells = [IndexPath]()
     var submittedCells = [IndexPath]()
     
+    var timer = Timer()
+    var timeRemaining = 30
+    var minutesLeft = 0
+    var secondsLeft = 30
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +36,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Quit", style: .plain, target: self, action: #selector(quitGame))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(submitButtonPressed))
         
-        game.start() // populate the array with random nums
+        game.start() // populate the array with random num
+        startTimer()
+        
         numArr = game.numArray
         print("game.numArr: \(game.numArray)")
         itemsPerRow = game.numSquaresPerRow
@@ -42,10 +50,39 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
-        
-        let timer = Timer()
     }
     
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
+            self.timeRemaining -= 1
+            self.timerLabel.text = self.secondsLeft > 9 ? "\(self.minutesLeft):\(self.secondsLeft)" : "\(self.minutesLeft):0\(self.secondsLeft)"
+            self.timerLabel.textColor = self.secondsLeft > 9 ? UIColor.black : UIColor.red
+            self.minutesLeft = Int(self.timeRemaining) / 60 % 60
+            self.secondsLeft = Int(self.timeRemaining) % 60
+            
+            if self.minutesLeft + self.secondsLeft < 0 {
+                self.timer.invalidate()
+                let ac = UIAlertController(title: "Times up!", message: "You lost the game! Try again?", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    self.game.start()
+                    self.selectedTotalValue = 0
+                    print("Selected Total: \(self.selectedTotalValue)")
+                    
+                    self.minutesLeft = 0
+                    self.secondsLeft = 30
+                    
+                    self.game.generateNumberForTitle()
+                    self.title = self.game.numForTitle
+                    self.collectionView.reloadData()
+                    self.numArr = self.game.numArray
+                })
+                ac.addAction(okAction)
+                self.present(ac, animated: true, completion: nil)
+                return
+            }
+        })
+    }
+
     func quitGame() {
         // present alert controller pop-up message
         let ac = UIAlertController()
@@ -103,6 +140,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.title = self.game.numForTitle
                         self.collectionView.reloadData()
                         self.numArr = self.game.numArray
+                        self.timer.invalidate()
                     })
                     ac.addAction(okAction)
                     present(ac, animated: true, completion: nil)
@@ -180,7 +218,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         itemsPerRow = game.numSquaresPerRow
         let width = gameContainerView.frame.size.width / CGFloat(itemsPerRow)
-        let height = (self.view.frame.height) / CGFloat(itemsPerRow)
+        let height = gameContainerView.frame.height / CGFloat(itemsPerRow)
         
         return CGSize(width: width, height: height)
     }

@@ -22,16 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMw-kf-OD6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMw-kf-OD6" userLabel="Timer View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCB-2i-sL9">
-                                        <rect key="frame" x="123" y="10" width="130" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCB-2i-sL9">
+                                        <rect key="frame" x="88" y="10" width="200" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="gF3-ry-2Yo"/>
+                                            <constraint firstAttribute="width" constant="200" id="gF3-ry-2Yo"/>
                                             <constraint firstAttribute="height" constant="40" id="yyo-Eq-Jp3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -95,6 +95,7 @@
                     <connections>
                         <outlet property="collectionView" destination="TUa-Ja-AU1" id="tP4-NS-qcZ"/>
                         <outlet property="gameContainerView" destination="HLa-82-Xnk" id="P4f-Qs-rI1"/>
+                        <outlet property="timerLabel" destination="OCB-2i-sL9" id="E65-Qr-wzf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

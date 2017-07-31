@@ -16,8 +16,11 @@ class Game {
     var finalLevel: Int
     var score: Int
     var numSquaresPerRow: Int
-    
     var numForTitle: String?
+    
+    var timeRemaining = 30
+    var minutesLeft = 0
+    var secondsLeft = 30
     
     init() {
         self.level = 0
