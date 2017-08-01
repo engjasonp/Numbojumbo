@@ -16,7 +16,6 @@ class Game {
     var finalLevel: Int
     var score: Int
     var numSquaresPerRow: Int
-    var numForTitle: String?
     
     var timeRemaining = 30
     var minutesLeft = 0
@@ -58,15 +57,13 @@ class Game {
         numArrayCopy = numArray
     }
     
-    func generateNumberForTitle() {
+    func generateNumberForTitle() -> String {
         // called when navbar loads
         // called when submit button tapped
         // take sum of 2 nums from numArr unless there's only 1 number left
         
         // generate a combo of numbers from array
         // whatever numbers user selects to add up to answer: remove all those values from array
-        
-        print("numArrayCopy: \(numArrayCopy)")
         
         if numArrayCopy.count > 1 {
             let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
@@ -81,10 +78,10 @@ class Game {
             print("num2: \(num2)")
             
             let sum = num1 + num2
-            numForTitle = String(sum)
-        } else if numArrayCopy.count == 1 {
-            numForTitle = String(numArrayCopy[0])
+            return String(sum)
         }
+        return String(numArrayCopy[0])
+
     }
     
     func nextLevel() {
