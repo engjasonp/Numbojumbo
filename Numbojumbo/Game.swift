@@ -12,17 +12,17 @@ class Game {
     
     var numArray: [Int]
     var numArrayCopy: [Int]
-    var level: Int
+    var currentLevel: Int
     var finalLevel: Int
     var score: Int
     var numSquaresPerRow: Int
     
-    var timeRemaining = 30
-    var minutesLeft = 0
-    var secondsLeft = 30
+    var timeRemaining = 60
+    var minutesLeft = 1
+    var secondsLeft = 0
     
     init() {
-        self.level = 0
+        self.currentLevel = 0
         self.finalLevel = 1
         self.score = 0
         self.numSquaresPerRow = 4
@@ -31,7 +31,7 @@ class Game {
     }
     
     func start() {
-        self.level = 0
+        self.currentLevel = 0
         self.score = 0
         self.numSquaresPerRow = 2
         self.numArray = []
@@ -88,7 +88,7 @@ class Game {
         numSquaresPerRow += 2
         populateArrayWithRandomNums()
         numArrayCopy = numArray
-        level += 1
+        currentLevel += 1
         score = 0
     }
 }
