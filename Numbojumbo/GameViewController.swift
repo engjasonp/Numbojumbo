@@ -33,8 +33,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         
         self.edgesForExtendedLayout = []
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(quitGame))
-        
+        let menuButton = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(quitGame))
+        menuButton.tintColor = UIColor(red: 1.0, green: 0.874, blue: 0.0, alpha: 1.0)
+        navigationItem.leftBarButtonItem = menuButton
         reset()
         
         self.itemsPerRow = self.game.numSquaresPerRow
@@ -65,6 +66,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func startTimer() {
+        self.timeRemaining -= 1
+        self.setUpTimerLabel()
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
             self.timeRemaining -= 1
             self.setUpTimerLabel()
@@ -83,7 +87,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func setUpTimerLabel() {
         self.timerLabel.text = self.secondsLeft > 9 ? "\(self.minutesLeft):\(self.secondsLeft)" : "\(self.minutesLeft):0\(self.secondsLeft)"
-        self.timerLabel.textColor = self.timeRemaining > 9 ? UIColor.black : UIColor.red
+        self.timerLabel.textColor = self.timeRemaining > 9 ? UIColor.white : UIColor.red
         self.minutesLeft = Int(self.timeRemaining) / 60 % 60
         self.secondsLeft = Int(self.timeRemaining) % 60
     }
@@ -116,15 +120,21 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
         cell.numLabel.text = "\(game.numArray[indexPath.row])"
+        cell.numLabel.font = UIFont(name: "Arial", size: cell.frame.height / 3)
         
         if submittedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor.black
+            cell.backgroundColor = UIColor(red: 0.702, green: 0.870, blue: 0.757, alpha: 1.0)
+            cell.layer.borderColor = nil
+            cell.layer.borderWidth = 0.5
         }
         else if selectedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor.cyan
-            
+            cell.backgroundColor = UIColor(red: 0.791, green: 0.801, blue: 0.942, alpha: 1.0)
+            cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
+            cell.layer.borderWidth = 9.0
         } else {
-            cell.backgroundColor = UIColor.yellow
+            cell.backgroundColor = UIColor(red: 0.791, green: 0.801, blue: 0.942, alpha: 1.0)
+            cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
+            cell.layer.borderWidth = 0.5
         }
 
         return cell
@@ -176,32 +186,40 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     game.numArrayCopy.remove(at: game.numArrayCopy.index(of: game.numArray[selectedCells[i].row])!)
                 }
             }
-            
             print("game.score: \(game.score)")
             print("numArr.count: \(numArr.count)")
             print("game.currentLevel: \(game.currentLevel)")
             print("game.finalLevel: \(game.finalLevel)")
             
             if game.score == numArr.count { // if you passed a level
+                timer.invalidate()
+                collectionView.reloadData()
                 selectedCells.removeAll()
                 submittedCells.removeAll()
-                self.timer.invalidate()
                 
                 if game.currentLevel < game.finalLevel {
                     // display "Correct!" message
-                    
+                    print("data reloaded")
                     let ac = UIAlertController(title: "Good job!", message: "Level passed! Commence next level.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                        self.game.nextLevel()
+                        self.timeRemaining += 60
                         self.startTimer()
+                        
+                        print("game.currentLevel: \(self.game.currentLevel)")
+                        
+                        //self.setUpTimerLabel()
+                        self.numArr = self.game.numArray
+                        
+                        self.selectedTotalValue = 0
+                        print("Selected Total: \(self.selectedTotalValue)")
+                        
+                        self.title = self.game.generateNumberForTitle()
+                        print("data reloaded")
+                        self.collectionView.reloadData()
                     })
                     ac.addAction(okAction)
                     present(ac, animated: true, completion: nil)
-                    game.nextLevel()
-                    print("game.currentLevel: \(game.currentLevel)")
-                    self.timeRemaining += 60
-                    self.setUpTimerLabel()
-                    numArr = game.numArray
-                    
                 } else {
                     // else you beat the whole game
                     let ac = UIAlertController(title: "Congrats!", message: "You beat the game! Try again?", preferredStyle: .alert)
@@ -210,8 +228,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     })
                     ac.addAction(okAction)
                     self.present(ac, animated: true, completion: nil)
-                    return
                 }
+
+                return
             }
             
             selectedTotalValue = 0

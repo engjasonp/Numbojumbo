@@ -14,11 +14,7 @@ class numberCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        self.backgroundColor = UIColor.green
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.white.cgColor
-        numLabel.textColor = UIColor.red
+        numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
     }
 
 }

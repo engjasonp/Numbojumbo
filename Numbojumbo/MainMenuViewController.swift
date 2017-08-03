@@ -24,21 +24,26 @@ class MainMenuViewController: UIViewController {
     
     func setUpPlayButton() {
         playButton.translatesAutoresizingMaskIntoConstraints = false
-        playButton.layer.cornerRadius = 5
+        playButton.layer.cornerRadius = 10
         playButton.layer.masksToBounds = true
+        playButton.layer.borderColor = UIColor.black.cgColor
+        playButton.layer.borderWidth = 2.0
     }
     
     func setUpSettingsButton() {
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
-        settingsButton.layer.cornerRadius = 5
+        settingsButton.layer.cornerRadius = 10
         settingsButton.layer.masksToBounds = true
-        
+        settingsButton.layer.borderColor = UIColor.black.cgColor
+        settingsButton.layer.borderWidth = 2.0
     }
     
     func setUpAboutButton() {
         aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.layer.cornerRadius = 5
+        aboutButton.layer.cornerRadius = 10
         aboutButton.layer.masksToBounds = true
+        aboutButton.layer.borderColor = UIColor.black.cgColor
+        aboutButton.layer.borderWidth = 2.0
     }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
