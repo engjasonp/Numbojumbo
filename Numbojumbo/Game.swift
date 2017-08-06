@@ -79,9 +79,10 @@ class Game {
             
             let sum = num1 + num2
             return String(sum)
+        } else if numArrayCopy.count == 0 || numArrayCopy.count == 1 {
+            return String(numArrayCopy[0])
         }
-        return String(numArrayCopy[0])
-
+            return ""
     }
     
     func nextLevel() {

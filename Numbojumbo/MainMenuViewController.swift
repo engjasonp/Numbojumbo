@@ -15,8 +15,10 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var aboutButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         
+//        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Arial", size: 32.0)!, NSForegroundColorAttributeName: UIColor.white]
+        title = "Numbojumbo"
         setUpPlayButton()
         setUpSettingsButton()
         setUpAboutButton()
