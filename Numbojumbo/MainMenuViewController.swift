@@ -13,15 +13,32 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
+    @IBOutlet weak var titleView: UIView!
+    
+    @IBOutlet var titleLabel: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        
-//        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Arial", size: 32.0)!, NSForegroundColorAttributeName: UIColor.white]
-        title = "Numbojumbo"
+        setUpTitleView()
         setUpPlayButton()
         setUpSettingsButton()
         setUpAboutButton()
+    }
+    
+    func setUpTitleView() {
+        for i in 0..<titleLabel.count {
+            titleLabel[i].translatesAutoresizingMaskIntoConstraints = false
+            titleLabel[i].layer.borderWidth = 3.0
+            titleLabel[i].layer.borderColor = UIColor.black.cgColor
+            if i % 2 == 0 {
+                titleLabel[i].backgroundColor = UIColor(red: 0.702, green: 0.870, blue: 0.757, alpha: 1.0)
+            }
+        }
+        titleView.translatesAutoresizingMaskIntoConstraints = false
+        titleView.layer.cornerRadius = 10
+        titleView.layer.masksToBounds = true
+        titleView.layer.borderColor = UIColor.black.cgColor
+        titleView.layer.borderWidth = 6.0
     }
     
     func setUpPlayButton() {
@@ -29,7 +46,7 @@ class MainMenuViewController: UIViewController {
         playButton.layer.cornerRadius = 10
         playButton.layer.masksToBounds = true
         playButton.layer.borderColor = UIColor.black.cgColor
-        playButton.layer.borderWidth = 2.0
+        playButton.layer.borderWidth = 3.0
     }
     
     func setUpSettingsButton() {
@@ -37,7 +54,7 @@ class MainMenuViewController: UIViewController {
         settingsButton.layer.cornerRadius = 10
         settingsButton.layer.masksToBounds = true
         settingsButton.layer.borderColor = UIColor.black.cgColor
-        settingsButton.layer.borderWidth = 2.0
+        settingsButton.layer.borderWidth = 3.0
     }
     
     func setUpAboutButton() {
@@ -45,18 +62,6 @@ class MainMenuViewController: UIViewController {
         aboutButton.layer.cornerRadius = 10
         aboutButton.layer.masksToBounds = true
         aboutButton.layer.borderColor = UIColor.black.cgColor
-        aboutButton.layer.borderWidth = 2.0
-    }
-    
-    @IBAction func playButtonPressed(_ sender: UIButton) {
-        print("Game started!")
-    }
-    
-    @IBAction func settingsButtonPressed(_ sender: UIButton) {
-        print("Settings opened!")
-    }
-    
-    @IBAction func aboutButtonPressed(_ sender: UIButton) {
-        print("About page opened!")
+        aboutButton.layer.borderWidth = 3.0
     }
 }

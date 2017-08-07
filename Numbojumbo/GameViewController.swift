@@ -150,17 +150,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if submittedCells.contains(indexPath) {
             cell.backgroundColor = UIColor(red: 0.702, green: 0.870, blue: 0.757, alpha: 1.0)
-            cell.layer.borderColor = nil
-            cell.layer.borderWidth = 0.5
         }
         else if selectedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor(red: 0.791, green: 0.801, blue: 0.942, alpha: 1.0)
-            cell.layer.borderColor = UIColor(red: 1.0, green: 0.874, blue: 0, alpha: 1.0).cgColor
-            cell.layer.borderWidth = 9.0
+            cell.backgroundColor = UIColor(red: 1.0, green: 0.874, blue: 0, alpha: 1.0)
         } else {
-            cell.backgroundColor = UIColor(red: 0.791, green: 0.801, blue: 0.942, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.9, alpha: 1.0)
             cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
-            cell.layer.borderWidth = 0.5
+            cell.layer.borderWidth = 9.0
         }
         
         if !selectedCells.isEmpty {

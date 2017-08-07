@@ -16,5 +16,4 @@ class numberCell: UICollectionViewCell {
         super.awakeFromNib()
         numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
     }
-
 }
