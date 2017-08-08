@@ -80,7 +80,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.068619854750000001" green="0.1256764531" blue="0.12598398329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.11156252771615982" green="0.17669034004211426" blue="0.17704784870147705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Fi8-Hi-usT" firstAttribute="leading" secondItem="wMw-kf-OD6" secondAttribute="leading" id="1Yh-gI-cJg"/>
                                     <constraint firstAttribute="trailing" secondItem="Fi8-Hi-usT" secondAttribute="trailing" id="7gF-Cy-ynE"/>
@@ -251,7 +251,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1878" y="-537"/>
+            <point key="canvasLocation" x="2290" y="467"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="cba-bV-UmJ">
@@ -265,48 +265,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKm-K2-X6q">
-                                <rect key="frame" x="40" y="277" width="295" height="60"/>
-                                <color key="backgroundColor" red="0.70199999999999996" green="1" blue="0.75700000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="dTM-PP-sLZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
-                                <state key="normal" title="P L A Y">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="sBb-FM-gk8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-tR-5sd">
-                                <rect key="frame" x="40" y="372" width="295" height="60"/>
-                                <color key="backgroundColor" red="0.89459153163580252" green="0.75700000000000001" blue="0.42871923225308634" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="oXV-jI-htK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
-                                <state key="normal" title="S E T T I N G S">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-6c-PdL">
-                                <rect key="frame" x="40" y="467" width="295" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="T1M-q4-Svr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
-                                <state key="normal" title="A B O U T">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-dr-auK" userLabel="Submit View">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.068619854750000001" green="0.1256764531" blue="0.12598398329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfY-Io-Jm7" userLabel="Title View">
-                                <rect key="frame" x="20.5" y="106" width="334" height="128"/>
+                                <rect key="frame" x="20" y="106" width="334" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGM-BC-lLx">
                                         <rect key="frame" x="0.0" y="0.0" width="67" height="64"/>
@@ -433,6 +393,61 @@
                                     <constraint firstItem="AGM-BC-lLx" firstAttribute="leading" secondItem="zfY-Io-Jm7" secondAttribute="leading" id="sop-mn-efh"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-dr-auK" userLabel="Bottom Bar View">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.11156252771615982" green="0.17669034004211426" blue="0.17704784870147705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbd-b2-OUK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="545"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Txz-H2-8lY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKm-K2-X6q">
+                                <rect key="frame" x="40" y="277" width="295" height="60"/>
+                                <color key="backgroundColor" red="0.70199999999999996" green="1" blue="0.75700000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dTM-PP-sLZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <state key="normal" title="P L A Y">
+                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="sBb-FM-gk8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-tR-5sd">
+                                <rect key="frame" x="40" y="372" width="295" height="60"/>
+                                <color key="backgroundColor" red="0.89459153163580252" green="0.75700000000000001" blue="0.42871923225308634" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="oXV-jI-htK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <state key="normal" title="S E T T I N G S">
+                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gkj-RI-0dY" kind="show" id="CxD-b3-tJw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-6c-PdL">
+                                <rect key="frame" x="40" y="467" width="295" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="T1M-q4-Svr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <state key="normal" title="A B O U T">
+                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutButtonClicked:" destination="jhy-gW-gRr" eventType="touchUpInside" id="C75-3l-6oP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -461,9 +476,11 @@
                     <navigationItem key="navigationItem" id="BKO-Vf-nx8"/>
                     <connections>
                         <outlet property="aboutButton" destination="K6B-6c-PdL" id="ubd-EI-RYN"/>
+                        <outlet property="aboutView" destination="KdZ-jc-bQF" id="hj6-mB-i9J"/>
                         <outlet property="playButton" destination="dKm-K2-X6q" id="2VE-zp-H8X"/>
                         <outlet property="settingsButton" destination="fh0-tR-5sd" id="Rvm-Ij-jjG"/>
                         <outlet property="titleView" destination="zfY-Io-Jm7" id="9Vw-Lp-TIs"/>
+                        <outlet property="visualEffectView" destination="wbd-b2-OUK" id="RXm-1D-WB0"/>
                         <outletCollection property="titleLabel" destination="AGM-BC-lLx" collectionClass="NSMutableArray" id="tVY-dl-K5n"/>
                         <outletCollection property="titleLabel" destination="h8k-0A-drU" collectionClass="NSMutableArray" id="3d6-PR-WhX"/>
                         <outletCollection property="titleLabel" destination="Pp4-yu-Iz9" collectionClass="NSMutableArray" id="AYo-cs-WuY"/>
@@ -477,8 +494,124 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzQ-Gg-jof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="KdZ-jc-bQF" userLabel="About View">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H O W  T O  P L A Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybh-Hq-w6o">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
+                            <color key="backgroundColor" red="0.1115625277" green="0.17669034" blue="0.17704784870000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="Acc-SQ-tqR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-ek-ta0" userLabel="About Title Separator">
+                            <rect key="frame" x="0.0" y="50" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tO-mP4">
+                            <rect key="frame" x="16" y="50" width="268" height="348.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">∙ Try to beat the game before the time runs out! 
+
+∙ Select at least one (1) square to add up to the sum at the top of the screen. Tap "SUBMIT" after selected. 
+
+∙ Once all numbers have been used, the squares turn green and you can move on to the next level. 
+
+∙ If you pass a level, you are given an extension of 60 seconds.
+
+∙ Good luck!</mutableString>
+                            <color key="textColor" red="1" green="0.874" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                        </textView>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
+                            <rect key="frame" x="0.0" y="354" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
+                            <rect key="frame" x="0.0" y="354" width="300" height="46"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1115625277" green="0.17669034" blue="0.17704784870000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="returnToMainMenuScreen:" destination="jhy-gW-gRr" eventType="touchUpInside" id="4ya-nI-ejo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1469391286" green="0.21199238300000001" blue="0.2123552859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Ybh-Hq-w6o" firstAttribute="leading" secondItem="KdZ-jc-bQF" secondAttribute="leading" id="8CJ-R9-Kcm"/>
+                        <constraint firstAttribute="trailing" secondItem="Ybh-Hq-w6o" secondAttribute="trailing" id="EI2-ju-0Go"/>
+                        <constraint firstItem="Ybh-Hq-w6o" firstAttribute="top" secondItem="KdZ-jc-bQF" secondAttribute="top" id="eO8-k9-zqU"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1084" y="105.69715142428787"/>
+            <point key="canvasLocation" x="1084" y="467"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Ae7-NV-U5y">
+            <objects>
+                <viewController id="gkj-RI-0dY" userLabel="Settings View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IlV-Vz-Q5z"/>
+                        <viewControllerLayoutGuide type="bottom" id="ui3-O3-0lu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S4Q-aS-SQ0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYk-8z-Kg0" userLabel="Submit View">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.12335865944623947" green="0.1884579062461853" blue="0.1888175904750824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oku-Gg-It9" userLabel="Sound Effects Slider">
+                                <rect key="frame" x="14" y="201" width="347" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gm7-8L-Zgb" userLabel="Music Slider">
+                                <rect key="frame" x="14" y="357" width="347" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umu-OG-mKt">
+                                <rect key="frame" x="16" y="136" width="267" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhx-DO-yaB">
+                                <rect key="frame" x="16" y="288" width="200" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-BA-4OH" userLabel="Sound Effects Switch">
+                                <rect key="frame" x="310" y="136" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GM4-jQ-rwW" userLabel="Music Switch">
+                                <rect key="frame" x="310" y="288" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbU-ft-cII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="1173.4632683658172"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2lG-51-PHp">

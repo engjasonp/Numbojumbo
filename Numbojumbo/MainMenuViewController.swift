@@ -14,11 +14,18 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var titleView: UIView!
-    
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet var aboutView: UIView!
     @IBOutlet var titleLabel: [UILabel]!
     
+    var effect: UIVisualEffect!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
+        
         setUpTitleView()
         setUpPlayButton()
         setUpSettingsButton()
@@ -63,5 +70,36 @@ class MainMenuViewController: UIViewController {
         aboutButton.layer.masksToBounds = true
         aboutButton.layer.borderColor = UIColor.black.cgColor
         aboutButton.layer.borderWidth = 3.0
+    }
+    
+    func animateIn() {
+        
+        aboutView.center = self.view.center
+        aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        aboutView.alpha = 0
+        self.view.addSubview(aboutView)
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.effect = self.effect
+            self.aboutView.alpha = 1
+            self.aboutView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func animateOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.aboutView.alpha = 0
+            self.visualEffectView.effect = nil
+        }) { (success: Bool) in
+            self.aboutView.removeFromSuperview()
+        }
+    }
+    
+    @IBAction func returnToMainMenuScreen(_ sender: UIButton) {
+        animateOut()
+    }
+    
+    @IBAction func aboutButtonClicked(_ sender: UIButton) {
+        animateIn()
     }
 }
