@@ -56,15 +56,18 @@ class Game {
     }
     
     func generateNumberForTitle() -> String {
+        
+        if numArrayCopy.count == 1 {
+            return String(numArrayCopy[0])
+        }
+        
         var result = 0
         var indexArr = [Int]()
         
         var randomNum = Int(arc4random_uniform(UInt32(currentLevel + 3)))
-        print("randomNum: \(randomNum)")
-        while randomNum > numArrayCopy.count || randomNum == 0 {
+        while randomNum > numArrayCopy.count || randomNum < 2 {
             randomNum = Int(arc4random_uniform(UInt32(currentLevel + 3)))
         }
-        print("randomNum: \(randomNum)")
         for _ in 0..<randomNum {
             var randomIndexValue = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
             while indexArr.contains(randomIndexValue) {
@@ -76,25 +79,6 @@ class Game {
         }
         
         return String(result)
-        
-//        if numArrayCopy.count > 1 {
-//            let randomIndexValue1 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
-//            let num1 = numArrayCopy[numArrayCopy.index(randomIndexValue1, offsetBy: 0)]
-//            var randomIndexValue2 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
-//            while randomIndexValue2 == randomIndexValue1 {
-//                randomIndexValue2 = Int(arc4random_uniform(UInt32(numArrayCopy.count)))
-//            }
-//            let num2 = numArrayCopy[numArrayCopy.index(randomIndexValue2, offsetBy: 0)]
-//            
-//            print("num1: \(num1)")
-//            print("num2: \(num2)")
-//            
-//            let sum = num1 + num2
-//            return String(sum)
-//        } else if numArrayCopy.count == 1 {
-//            return String(numArrayCopy[0])
-//        }
-//            return ""
     }
     
     func nextLevel() {
