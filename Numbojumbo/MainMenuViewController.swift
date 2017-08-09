@@ -43,7 +43,9 @@ class MainMenuViewController: UIViewController {
         setUpPlayButton()
         setUpSettingsButton()
         setUpAboutButton()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         playThemeSong()
     }
     
@@ -88,16 +90,22 @@ class MainMenuViewController: UIViewController {
     }
     
     func playThemeSong() {
-        guard let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "radiant-night", withExtension: "mp3") else {
+            return
+        }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
             
             mainMenuAudioPlayer = try AVAudioPlayer(contentsOf: url)
-            guard let mainMenuAudioPlayer = mainMenuAudioPlayer else { return }
-            
+            guard let mainMenuAudioPlayer = mainMenuAudioPlayer else {
+                return
+            }
+            mainMenuAudioPlayer.volume = Float(musicVolume / 100)
+            mainMenuAudioPlayer.numberOfLoops = -1
             mainMenuAudioPlayer.play()
+            print("playing")
         } catch let error {
             print(error.localizedDescription)
         }
@@ -152,11 +160,36 @@ class MainMenuViewController: UIViewController {
         setUpVolumeSettings()
     }
     @IBAction func musicVolumeChanged(_ sender: UISlider) {
-        musicVolumeValueLabel.text = String(Int(musicVolume))
         musicVolume = CGFloat(sender.value * 100)
+        musicVolumeValueLabel.text = String(Int(musicVolume))
+        mainMenuAudioPlayer.volume = Float(musicVolume / 100)
+        musicVolumeSwitch.isOn = true
     }
     @IBAction func soundEffectsVolumeChanged(_ sender: UISlider) {
-        soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
         effectsVolume = CGFloat(sender.value * 100)
+        soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
+        soundEffectsVolumeSwitch.isOn = true
+    }
+    @IBAction func toggleMusicVolume(_ sender: UISwitch) {
+        if musicVolumeSwitch.isOn {
+            musicVolume = CGFloat(0)
+            musicVolumeValueLabel.text = "0"
+            musicVolumeSlider.value = 0
+            mainMenuAudioPlayer.volume = Float(0)
+            musicVolumeSwitch.setOn(false, animated: true)
+        } else {
+            musicVolumeSwitch.isOn = true
+        }
+    }
+    @IBAction func toggleSoundEffectsVolume(_ sender: UISwitch) {
+        if soundEffectsVolumeSwitch.isOn {
+            effectsVolume = CGFloat(0)
+            soundEffectsVolumeValueLabel.text = "0"
+            soundEffectsVolumeSlider.value = 0
+            //effectsAudioPlayer.volume = Float(0)
+            soundEffectsVolumeSwitch.setOn(false, animated: true)
+        } else {
+            soundEffectsVolumeSwitch.isOn = true
+        }
     }
 }

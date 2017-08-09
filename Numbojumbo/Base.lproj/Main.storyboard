@@ -631,29 +631,35 @@
                             <color key="textColor" red="0.94466012720000003" green="0.837248981" blue="0.16704884170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-ng-s6l" userLabel="Sound Effects Switch">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-ng-s6l" userLabel="Music Volume Switch">
                             <rect key="frame" x="235" y="65" width="51" height="31"/>
+                            <connections>
+                                <action selector="toggleMusicVolume:" destination="jhy-gW-gRr" eventType="valueChanged" id="gbg-Ai-U8w"/>
+                            </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsO-dT-4YP">
-                            <rect key="frame" x="235" y="126" width="52" height="21"/>
+                            <rect key="frame" x="235" y="126" width="52" height="26.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="52" id="uk4-YK-MYD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaP-HT-U5P">
-                            <rect key="frame" x="235" y="235" width="52" height="21"/>
+                            <rect key="frame" x="235" y="235" width="52" height="26.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="52" id="B0w-6G-tmg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-gU-8vL" userLabel="Sound Effects Switch">
                             <rect key="frame" x="235" y="173" width="51" height="31"/>
+                            <connections>
+                                <action selector="toggleSoundEffectsVolume:" destination="jhy-gW-gRr" eventType="valueChanged" id="It3-2X-2n0"/>
+                            </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mn3-up-oaA">
                             <rect key="frame" x="16" y="168" width="201" height="40"/>

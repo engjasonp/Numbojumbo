@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA28E4A21F3ADB60006E7190 /* radiant-night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */; };
+		CA28E4A61F3AEC9D006E7190 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A51F3AEC9D006E7190 /* ding.mp3 */; };
+		CA28E4A81F3AEF5F006E7190 /* blop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A71F3AEF5F006E7190 /* blop.mp3 */; };
+		CA28E4AA1F3AEF65006E7190 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A91F3AEF65006E7190 /* pop.mp3 */; };
 		CAD967D51F0B1AC7006F0745 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD967D41F0B1AC7006F0745 /* AppDelegate.swift */; };
 		CAD967D71F0B1AC7006F0745 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD967D61F0B1AC7006F0745 /* GameViewController.swift */; };
 		CAD967DA1F0B1AC7006F0745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAD967D81F0B1AC7006F0745 /* Main.storyboard */; };
@@ -19,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radiant-night.mp3"; sourceTree = "<group>"; };
+		CA28E4A31F3AEC22006E7190 /* levelUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = levelUp.caf; sourceTree = "<group>"; };
+		CA28E4A41F3AEC68006E7190 /* clock.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock.caf; sourceTree = "<group>"; };
+		CA28E4A51F3AEC9D006E7190 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		CA28E4A71F3AEF5F006E7190 /* blop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blop.mp3; sourceTree = "<group>"; };
+		CA28E4A91F3AEF65006E7190 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		CAD967D11F0B1AC7006F0745 /* Numbojumbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numbojumbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD967D41F0B1AC7006F0745 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAD967D61F0B1AC7006F0745 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +56,12 @@
 		CA28E4A01F3AD3CD006E7190 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */,
+				CA28E4A41F3AEC68006E7190 /* clock.caf */,
+				CA28E4A31F3AEC22006E7190 /* levelUp.caf */,
+				CA28E4A71F3AEF5F006E7190 /* blop.mp3 */,
+				CA28E4A91F3AEF65006E7190 /* pop.mp3 */,
+				CA28E4A51F3AEC9D006E7190 /* ding.mp3 */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -144,8 +160,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA28E4A21F3ADB60006E7190 /* radiant-night.mp3 in Resources */,
 				CAD967ED1F159C5D006F0745 /* numberCell.xib in Resources */,
+				CA28E4A81F3AEF5F006E7190 /* blop.mp3 in Resources */,
 				CAD967DF1F0B1AC7006F0745 /* LaunchScreen.storyboard in Resources */,
+				CA28E4AA1F3AEF65006E7190 /* pop.mp3 in Resources */,
+				CA28E4A61F3AEC9D006E7190 /* ding.mp3 in Resources */,
 				CAD967DC1F0B1AC7006F0745 /* Assets.xcassets in Resources */,
 				CAD967DA1F0B1AC7006F0745 /* Main.storyboard in Resources */,
 			);
