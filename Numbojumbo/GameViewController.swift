@@ -149,14 +149,17 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.numLabel.font = UIFont(name: "Arial", size: cell.frame.height / 3)
         
         if submittedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor(red: 0.702, green: 0.870, blue: 0.757, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.563, green: 0.790, blue: 0.347, alpha: 1.0)
+            cell.numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
         }
         else if selectedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor(red: 1.0, green: 0.874, blue: 0, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.945, green: 0.837, blue: 0.167, alpha: 1.0)
+            cell.numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
         } else {
-            cell.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.9, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.170, green: 0.511, blue: 0.504, alpha: 1.0)
             cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
             cell.layer.borderWidth = 9.0
+            cell.numLabel.textColor = UIColor.white
         }
         
         if !selectedCells.isEmpty {

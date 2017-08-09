@@ -23,7 +23,7 @@ class Game {
     
     init() {
         self.currentLevel = 0
-        self.finalLevel = 4
+        self.finalLevel = 3
         self.score = 0
         self.numSquaresPerRow = 4
         self.numArray = []
