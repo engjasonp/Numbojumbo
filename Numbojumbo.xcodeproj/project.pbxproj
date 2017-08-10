@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA23B02B1F3C2C2500B407A6 /* Talking With You.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA23B02A1F3C2C2500B407A6 /* Talking With You.mp3 */; };
 		CA28E4A21F3ADB60006E7190 /* radiant-night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */; };
 		CA28E4A61F3AEC9D006E7190 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A51F3AEC9D006E7190 /* ding.mp3 */; };
 		CA28E4A81F3AEF5F006E7190 /* blop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA28E4A71F3AEF5F006E7190 /* blop.mp3 */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA23B02A1F3C2C2500B407A6 /* Talking With You.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Talking With You.mp3"; sourceTree = "<group>"; };
 		CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radiant-night.mp3"; sourceTree = "<group>"; };
 		CA28E4A31F3AEC22006E7190 /* levelUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = levelUp.caf; sourceTree = "<group>"; };
 		CA28E4A41F3AEC68006E7190 /* clock.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock.caf; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		CA28E4A01F3AD3CD006E7190 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				CA23B02A1F3C2C2500B407A6 /* Talking With You.mp3 */,
 				CA28E4A11F3ADB60006E7190 /* radiant-night.mp3 */,
 				CA28E4A41F3AEC68006E7190 /* clock.caf */,
 				CA28E4A31F3AEC22006E7190 /* levelUp.caf */,
@@ -166,6 +169,7 @@
 				CAD967DF1F0B1AC7006F0745 /* LaunchScreen.storyboard in Resources */,
 				CA28E4AA1F3AEF65006E7190 /* pop.mp3 in Resources */,
 				CA28E4A61F3AEC9D006E7190 /* ding.mp3 in Resources */,
+				CA23B02B1F3C2C2500B407A6 /* Talking With You.mp3 in Resources */,
 				CAD967DC1F0B1AC7006F0745 /* Assets.xcassets in Resources */,
 				CAD967DA1F0B1AC7006F0745 /* Main.storyboard in Resources */,
 			);

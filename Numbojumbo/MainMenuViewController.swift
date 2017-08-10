@@ -79,6 +79,8 @@ class MainMenuViewController: UIViewController {
         settingsButton.layer.masksToBounds = true
         settingsButton.layer.borderColor = UIColor.white.cgColor
         settingsButton.layer.borderWidth = 3.0
+        
+        setUpVolumeSettings()
     }
     
     func setUpAboutButton() {
@@ -90,7 +92,7 @@ class MainMenuViewController: UIViewController {
     }
     
     func playThemeSong() {
-        guard let url = Bundle.main.url(forResource: "radiant-night", withExtension: "mp3") else {
+        guard let url = Bundle.main.url(forResource: "Talking With You", withExtension: "mp3") else {
             return
         }
         
@@ -141,9 +143,24 @@ class MainMenuViewController: UIViewController {
         }
     }
     
+    func gameViewControllerDidFinish(_ gameVC: GameViewController) {
+        self.musicVolume = gameVC.musicVolume
+        self.effectsVolume = gameVC.effectsVolume
+        setUpVolumeSettings()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playGame" {
+            let gameVC = segue.destination as! GameViewController
+            gameVC.musicVolume = self.musicVolume
+            gameVC.effectsVolume = self.effectsVolume
+        }
+    }
+    
     @IBAction func playButtonTapped(_ sender: UIButton) {
         mainMenuAudioPlayer.stop()
     }
+    
     @IBAction func returnToMainMenuScreen(_ sender: UIButton) {
         animateOut(sender.superview!)
     }
@@ -155,21 +172,24 @@ class MainMenuViewController: UIViewController {
     @IBAction func applySettingsChanges(_ sender: UIButton) {
         animateOut(sender.superview!)
     }
+    
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
         animateIn(settingsView)
-        setUpVolumeSettings()
     }
+    
     @IBAction func musicVolumeChanged(_ sender: UISlider) {
         musicVolume = CGFloat(sender.value * 100)
         musicVolumeValueLabel.text = String(Int(musicVolume))
         mainMenuAudioPlayer.volume = Float(musicVolume / 100)
         musicVolumeSwitch.isOn = true
     }
+    
     @IBAction func soundEffectsVolumeChanged(_ sender: UISlider) {
         effectsVolume = CGFloat(sender.value * 100)
         soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
         soundEffectsVolumeSwitch.isOn = true
     }
+    
     @IBAction func toggleMusicVolume(_ sender: UISwitch) {
         if musicVolumeSwitch.isOn {
             musicVolume = CGFloat(0)
@@ -181,6 +201,7 @@ class MainMenuViewController: UIViewController {
             musicVolumeSwitch.isOn = true
         }
     }
+    
     @IBAction func toggleSoundEffectsVolume(_ sender: UISwitch) {
         if soundEffectsVolumeSwitch.isOn {
             effectsVolume = CGFloat(0)

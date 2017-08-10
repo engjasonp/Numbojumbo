@@ -7,7 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
+protocol GameVCDelegate: class {
+    // Helps to pass the volume values from MainMenuViewController to GameViewController
+    func gameViewControllerDidFinish (_ gameVC: GameViewController)
+}
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var gameContainerView: UIView!
@@ -19,11 +24,18 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet var pauseMenuView: UIView!
     @IBOutlet weak var pauseMenuButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+
+    @IBOutlet weak var settingsView: UIView!
+    @IBOutlet weak var musicVolumeSwitch: UISwitch!
+    @IBOutlet weak var soundEffectsVolumeSwitch: UISwitch!
+    @IBOutlet weak var musicVolumeSlider: UISlider!
+    @IBOutlet weak var soundEffectsVolumeSlider: UISlider!
+    
+    @IBOutlet weak var musicVolumeValueLabel: UILabel!
+    @IBOutlet weak var soundEffectsVolumeValueLabel: UILabel!
     
     let game = Game()
     let reuseIdentifier = "numberCell"
-    
-    var effect:UIVisualEffect!
     
     var itemsPerRow = Int()
     var selectedTotalValue = 0
@@ -38,6 +50,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     var secondsLeft = Int()
     var timerIsPaused = Bool()
     
+    var effect:UIVisualEffect!
+    var gameAudioPlayer: AVAudioPlayer!
+    var musicVolume: CGFloat = 0.0
+    var effectsVolume: CGFloat = 0.0
+    
+    var delegate: GameVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +64,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
+
+        playInGameSong()
         
         pauseMenuButton.tintColor = UIColor(red: 1.0, green: 0.874, blue: 0.0, alpha: 1.0)
         pauseMenuView.clipsToBounds = true
@@ -62,6 +83,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func reset() {
+        gameAudioPlayer.stop()
+        gameAudioPlayer.play()
         timer.invalidate()
         game.start()
         timerIsPaused = false
@@ -95,7 +118,17 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                         self.reset()
                     })
+                    
+                    let noAction = UIAlertAction(title: "NO", style: .default, handler: { (UIAlertAction) in
+                        self.gameAudioPlayer.stop()
+                        if self.delegate != nil {
+                            self.delegate?.gameViewControllerDidFinish(self)
+                        }
+                        self.navigationController?.popToRootViewController(animated: true)
+                        print("Game quit!")
+                    })
                     ac.addAction(okAction)
+                    ac.addAction(noAction)
                     self.present(ac, animated: true, completion: nil)
                 }
             }
@@ -108,28 +141,56 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.minutesLeft = Int(self.timeRemaining) / 60 % 60
         self.secondsLeft = Int(self.timeRemaining) % 60
     }
-
-    // pauseMenuView methods
-    func animateIn() {
+    
+    func playInGameSong() {
+        guard let url = Bundle.main.url(forResource: "radiant-night", withExtension: "mp3") else {
+            return
+        }
         
-        pauseMenuView.center = gameContainerView.center
-        pauseMenuView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        pauseMenuView.alpha = 0
-        self.view.addSubview(pauseMenuView)
-        UIView.animate(withDuration: 0.4) {
-            self.visualEffectView.effect = self.effect
-            self.pauseMenuView.alpha = 1
-            self.pauseMenuView.transform = CGAffineTransform.identity
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            gameAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let gameAudioPlayer = gameAudioPlayer else {
+                return
+            }
+            gameAudioPlayer.volume = Float(musicVolume / 100)
+            gameAudioPlayer.numberOfLoops = -1
+            gameAudioPlayer.play()
+            print("playing")
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
-    func animateOut() {
+    func setUpVolumeSettings() {
+        musicVolumeSlider.value = Float(musicVolume / 100)
+        musicVolumeValueLabel.text = String(Int(musicVolumeSlider.value * 100))
+        
+        soundEffectsVolumeSlider.value = Float(effectsVolume / 100)
+        soundEffectsVolumeValueLabel.text = String(Int(soundEffectsVolumeSlider.value * 100))
+    }
+
+    func animateIn(_ popUpView: UIView) {
+        popUpView.center = self.gameContainerView.center
+        popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        popUpView.alpha = 0
+        self.view.addSubview(popUpView)
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.effect = self.effect
+            popUpView.alpha = 1
+            popUpView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func animateOut(_ popUpView: UIView) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.pauseMenuView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.pauseMenuView.alpha = 0
+            popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            popUpView.alpha = 0
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
-            self.pauseMenuView.removeFromSuperview()
+            popUpView.removeFromSuperview()
         }
     }
     
@@ -241,10 +302,19 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                 } else {
                     // else you beat the whole game
                     let ac = UIAlertController(title: "Congrats!", message: "You beat the game! Try again?", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    let okAction = UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
                         self.reset()
                     })
+                    let noAction = UIAlertAction(title: "No", style: .default, handler: { (UIAlertAction) in
+                        self.gameAudioPlayer.stop()
+                        if self.delegate != nil {
+                            self.delegate?.gameViewControllerDidFinish(self)
+                        }
+                        self.navigationController?.popToRootViewController(animated: true)
+                        print("Game quit!")
+                    })
                     ac.addAction(okAction)
+                    ac.addAction(noAction)
                     self.present(ac, animated: true, completion: nil)
                 }                
                 return
@@ -263,6 +333,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             present(ac, animated: true, completion: nil)
         }
     }
+    
     @IBAction func pauseMenuButtonClicked(_ sender: UIButton) {
         timerIsPaused = true
         pauseMenuButton.setTitleColor(UIColor.darkGray, for: .normal)
@@ -270,14 +341,14 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         pauseMenuButton.isUserInteractionEnabled = false
         collectionView.isUserInteractionEnabled = false
         submitButton.isUserInteractionEnabled = false
-        animateIn()
+        animateIn(pauseMenuView)
     }
     
     @IBAction func dismissPauseMenu(_ sender: UIButton) {
         collectionView.isUserInteractionEnabled = true
         submitButton.isUserInteractionEnabled = true
         pauseMenuButton.isUserInteractionEnabled = true
-        animateOut()
+        animateOut(pauseMenuView)
         pauseMenuButton.setTitleColor(UIColor(red: 1.0, green: 0.874, blue: 0.0, alpha: 1.0), for: .normal)
         pauseMenuButton.setTitle("PAUSE", for: .normal)
         timerIsPaused = false
@@ -287,6 +358,10 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         // present alert controller pop-up message
         let ac = UIAlertController(title: "", message: "Exit game?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            self.gameAudioPlayer.stop()
+            if self.delegate != nil {
+                self.delegate?.gameViewControllerDidFinish(self)
+            }
             self.navigationController?.popToRootViewController(animated: true)
             print("Game quit!")
         })
@@ -295,6 +370,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(ac, animated: true)
 
     }
+    
     @IBAction func retry(_ sender: UIButton) {
         let ac = UIAlertController(title: "", message: "Try again?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
@@ -305,6 +381,58 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(ac, animated: true)
     }
+    
+    @IBAction func settingsButtonClicked(_ sender: UIButton) {
+        animateIn(settingsView)
+        setUpVolumeSettings()
+    }
+    
+    @IBAction func musicVolumeChanged(_ sender: UISlider) {
+        musicVolume = CGFloat(sender.value * 100)
+        musicVolumeValueLabel.text = String(Int(musicVolume))
+        gameAudioPlayer.volume = Float(musicVolume / 100)
+        musicVolumeSwitch.isOn = true
+    }
+    
+    @IBAction func soundEffectsVolumeChanged(_ sender: UISlider) {
+        effectsVolume = CGFloat(sender.value * 100)
+        soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
+        soundEffectsVolumeSwitch.isOn = true
+    }
+    
+    @IBAction func toggleMusicVolume(_ sender: UISwitch) {
+        if musicVolumeSwitch.isOn {
+            musicVolume = CGFloat(0)
+            musicVolumeValueLabel.text = "0"
+            musicVolumeSlider.value = 0
+            gameAudioPlayer.volume = Float(0)
+            musicVolumeSwitch.setOn(false, animated: true)
+        } else {
+            musicVolumeSwitch.isOn = true
+        }
+    }
+    
+    @IBAction func toggleSoundEffectsVolume(_ sender: UISwitch) {
+        if soundEffectsVolumeSwitch.isOn {
+            effectsVolume = CGFloat(0)
+            soundEffectsVolumeValueLabel.text = "0"
+            soundEffectsVolumeSlider.value = 0
+            //effectsAudioPlayer.volume = Float(0)
+            soundEffectsVolumeSwitch.setOn(false, animated: true)
+        } else {
+            soundEffectsVolumeSwitch.isOn = true
+        }
+    }
+    
+    @IBAction func applySettingsChanges(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.settingsView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.settingsView.alpha = 0
+        }) { (success: Bool) in
+            self.settingsView.removeFromSuperview()
+        }
+    }
+    
 }
 
 extension UIColor {
