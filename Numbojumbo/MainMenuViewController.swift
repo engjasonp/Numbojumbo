@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, GameVCDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
@@ -146,14 +146,21 @@ class MainMenuViewController: UIViewController {
     func gameViewControllerDidFinish(_ gameVC: GameViewController) {
         self.musicVolume = gameVC.musicVolume
         self.effectsVolume = gameVC.effectsVolume
+        self.musicVolumeSwitch.isOn = gameVC.musicVolumeSwitch.isOn
+        self.soundEffectsVolumeSwitch.isOn = gameVC.musicVolumeSwitch.isOn        
         setUpVolumeSettings()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
         if segue.identifier == "playGame" {
             let gameVC = segue.destination as! GameViewController
+            gameVC.delegate = self
             gameVC.musicVolume = self.musicVolume
             gameVC.effectsVolume = self.effectsVolume
+            gameVC.musicVolumeSwitch.isOn = self.musicVolumeSwitch.isOn
+            gameVC.soundEffectsVolumeSwitch.isOn = self.soundEffectsVolumeSwitch.isOn
         }
     }
     

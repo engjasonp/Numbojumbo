@@ -120,12 +120,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     })
                     
                     let noAction = UIAlertAction(title: "NO", style: .default, handler: { (UIAlertAction) in
-                        self.gameAudioPlayer.stop()
-                        if self.delegate != nil {
-                            self.delegate?.gameViewControllerDidFinish(self)
-                        }
-                        self.navigationController?.popToRootViewController(animated: true)
-                        print("Game quit!")
+                        self.returnToMainMenu()
                     })
                     ac.addAction(okAction)
                     ac.addAction(noAction)
@@ -192,6 +187,15 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         }) { (success: Bool) in
             popUpView.removeFromSuperview()
         }
+    }
+    
+    func returnToMainMenu() {
+        self.gameAudioPlayer.stop()
+        if self.delegate != nil {
+            self.delegate?.gameViewControllerDidFinish(self)
+        }
+        self.navigationController?.popToRootViewController(animated: true)
+        print("Game quit!")
     }
     
     // UICollectionViewDataSource
@@ -306,12 +310,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.reset()
                     })
                     let noAction = UIAlertAction(title: "No", style: .default, handler: { (UIAlertAction) in
-                        self.gameAudioPlayer.stop()
-                        if self.delegate != nil {
-                            self.delegate?.gameViewControllerDidFinish(self)
-                        }
-                        self.navigationController?.popToRootViewController(animated: true)
-                        print("Game quit!")
+                        self.returnToMainMenu()
                     })
                     ac.addAction(okAction)
                     ac.addAction(noAction)
@@ -358,12 +357,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         // present alert controller pop-up message
         let ac = UIAlertController(title: "", message: "Exit game?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-            self.gameAudioPlayer.stop()
-            if self.delegate != nil {
-                self.delegate?.gameViewControllerDidFinish(self)
-            }
-            self.navigationController?.popToRootViewController(animated: true)
-            print("Game quit!")
+            self.returnToMainMenu()
         })
         ac.addAction(okAction)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
