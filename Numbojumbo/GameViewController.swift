@@ -52,6 +52,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var effect:UIVisualEffect!
     var gameAudioPlayer: AVAudioPlayer!
+    var effectsAudioPlayer: AVAudioPlayer!
     var musicVolume: CGFloat = 0.0
     var effectsVolume: CGFloat = 0.0
     
@@ -153,7 +154,26 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             gameAudioPlayer.volume = Float(musicVolume / 100)
             gameAudioPlayer.numberOfLoops = -1
             gameAudioPlayer.play()
-            print("playing")
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playSoundEffect(_ title: String, format: String) {
+        guard let url = Bundle.main.url(forResource: title, withExtension: format) else {
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            effectsAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let effectsAudioPlayer = effectsAudioPlayer else {
+                return
+            }
+            effectsAudioPlayer.volume = Float(effectsVolume / 100)
+            effectsAudioPlayer.play()
         } catch let error {
             print(error.localizedDescription)
         }
@@ -244,10 +264,12 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             return
         }
         else if selectedCells.contains(indexPath) {
+            playSoundEffect("blop", format: "mp3")
             let index = selectedCells.index(of: indexPath)
             selectedTotalValue = selectedTotalValue - game.numArray[indexPath.row]
             selectedCells.remove(at: index!)
         } else {
+            playSoundEffect("pop", format: "mp3")
             selectedCells.append(indexPath)
             selectedTotalValue = selectedTotalValue + game.numArray[indexPath.row]
         }
@@ -276,6 +298,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         if String(selectedTotalValue) == title {
+            playSoundEffect("ding", format: "mp3")
             game.score += selectedCells.count
             
             // append selectedcells indexpaths to submittedcells
@@ -356,7 +379,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func quitGame(_ sender: UIButton) {
         // present alert controller pop-up message
         let ac = UIAlertController(title: "", message: "Exit game?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+        let okAction = UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
             self.returnToMainMenu()
         })
         ac.addAction(okAction)
@@ -367,7 +390,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBAction func retry(_ sender: UIButton) {
         let ac = UIAlertController(title: "", message: "Try again?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+        let okAction = UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
             self.dismissPauseMenu(sender)
             self.reset()
         })

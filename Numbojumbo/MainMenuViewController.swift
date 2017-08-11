@@ -188,13 +188,13 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
         musicVolume = CGFloat(sender.value * 100)
         musicVolumeValueLabel.text = String(Int(musicVolume))
         mainMenuAudioPlayer.volume = Float(musicVolume / 100)
-        musicVolumeSwitch.isOn = true
+        musicVolumeSwitch.isOn = musicVolume > 0
     }
     
     @IBAction func soundEffectsVolumeChanged(_ sender: UISlider) {
         effectsVolume = CGFloat(sender.value * 100)
         soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
-        soundEffectsVolumeSwitch.isOn = true
+        soundEffectsVolumeSwitch.isOn = effectsVolume > 0
     }
     
     @IBAction func toggleMusicVolume(_ sender: UISwitch) {
