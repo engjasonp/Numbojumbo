@@ -562,30 +562,23 @@
                                     <constraint firstItem="AGM-BC-lLx" firstAttribute="leading" secondItem="zfY-Io-Jm7" secondAttribute="leading" id="sop-mn-efh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-dr-auK" userLabel="Bottom Bar View">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.11156252771615982" green="0.17669034004211426" blue="0.17704784870147705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="9Zb-0a-t9W"/>
-                                </constraints>
-                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbd-b2-OUK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Txz-H2-8lY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKm-K2-X6q">
                                 <rect key="frame" x="40" y="277" width="295" height="60"/>
-                                <color key="backgroundColor" red="0.56264013051986694" green="0.7902640700340271" blue="0.34717187285423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.251" blue="0.50600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dTM-PP-sLZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <state key="normal" title="P L A Y">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="playButtonTapped:" destination="jhy-gW-gRr" eventType="touchUpInside" id="H9d-R1-xWt"/>
@@ -594,13 +587,13 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-tR-5sd">
                                 <rect key="frame" x="40" y="372" width="295" height="60"/>
-                                <color key="backgroundColor" red="0.94466012716293335" green="0.83724898099899292" blue="0.16704884171485901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.251" blue="0.50600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oXV-jI-htK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <state key="normal" title="S E T T I N G S">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="settingsButtonTapped:" destination="jhy-gW-gRr" eventType="touchUpInside" id="dBl-GT-Eb5"/>
@@ -608,27 +601,26 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-6c-PdL">
                                 <rect key="frame" x="40" y="467" width="295" height="60"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="1" green="0.251" blue="0.50600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="T1M-q4-Svr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <state key="normal" title="A B O U T">
-                                    <color key="titleColor" red="0.13515061140060425" green="0.20022523403167725" blue="0.20058661699295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="aboutButtonTapped:" destination="jhy-gW-gRr" eventType="touchUpInside" id="kKT-4P-ECC"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.16961714625358582" green="0.51080137491226196" blue="0.50402015447616577" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.247" green="0.318" blue="0.70999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zfY-Io-Jm7" firstAttribute="centerX" secondItem="iSG-DL-QGy" secondAttribute="centerX" id="1dg-LE-7iV"/>
                             <constraint firstItem="Inu-O5-xm3" firstAttribute="top" secondItem="zfY-Io-Jm7" secondAttribute="bottom" constant="433" id="3lo-NX-vh9"/>
                             <constraint firstAttribute="leadingMargin" secondItem="K6B-6c-PdL" secondAttribute="leading" constant="-24" id="5uH-5v-twr"/>
-                            <constraint firstItem="Inu-O5-xm3" firstAttribute="top" secondItem="wbd-b2-OUK" secondAttribute="bottom" constant="60" id="9A1-w9-hJ7"/>
+                            <constraint firstItem="Inu-O5-xm3" firstAttribute="top" secondItem="wbd-b2-OUK" secondAttribute="bottom" id="9A1-w9-hJ7"/>
                             <constraint firstItem="wbd-b2-OUK" firstAttribute="top" secondItem="sQN-16-RGR" secondAttribute="bottom" id="AM4-Un-2vl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nm6-dr-auK" secondAttribute="trailing" constant="-16" id="Dh2-Ym-ulR"/>
                             <constraint firstItem="fh0-tR-5sd" firstAttribute="top" secondItem="dKm-K2-X6q" secondAttribute="bottom" constant="35" id="LiD-6M-a1F"/>
                             <constraint firstItem="zfY-Io-Jm7" firstAttribute="top" secondItem="sQN-16-RGR" secondAttribute="bottom" constant="42" id="UTS-Iy-v8l"/>
                             <constraint firstItem="dKm-K2-X6q" firstAttribute="centerX" secondItem="iSG-DL-QGy" secondAttribute="centerX" id="Vwb-lx-tYf"/>
@@ -636,10 +628,8 @@
                             <constraint firstItem="Inu-O5-xm3" firstAttribute="top" secondItem="fh0-tR-5sd" secondAttribute="bottom" constant="235" id="czz-X6-WMR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dKm-K2-X6q" secondAttribute="trailing" constant="24" id="dBK-GX-YOw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fh0-tR-5sd" secondAttribute="leading" constant="-24" id="eOX-iW-aTy"/>
-                            <constraint firstItem="nm6-dr-auK" firstAttribute="leading" secondItem="iSG-DL-QGy" secondAttribute="leadingMargin" constant="-16" id="fQt-kx-2hU"/>
                             <constraint firstItem="K6B-6c-PdL" firstAttribute="top" secondItem="fh0-tR-5sd" secondAttribute="bottom" constant="35" id="ffF-pg-Fit"/>
                             <constraint firstAttribute="trailing" secondItem="wbd-b2-OUK" secondAttribute="trailing" id="kYv-eA-Qvb"/>
-                            <constraint firstItem="nm6-dr-auK" firstAttribute="bottom" secondItem="Inu-O5-xm3" secondAttribute="top" id="kvs-cJ-ag5"/>
                             <constraint firstItem="wbd-b2-OUK" firstAttribute="leading" secondItem="iSG-DL-QGy" secondAttribute="leading" id="oGR-Uk-uz3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="K6B-6c-PdL" secondAttribute="trailing" constant="24" id="qhH-EN-FFe"/>
                             <constraint firstAttribute="leadingMargin" secondItem="dKm-K2-X6q" secondAttribute="leading" constant="-24" id="sig-oQ-rBh"/>
@@ -694,21 +684,24 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
-                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tO-mP4">
-                            <rect key="frame" x="16" y="50" width="268" height="348.5"/>
+                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tO-mP4" userLabel="Directions View">
+                            <rect key="frame" x="0.0" y="50" width="300" height="305"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <string key="text">∙ Try to beat the game before the time runs out! 
+                            <mutableString key="text">Try to beat the game before the time runs out!  Select at least one (1) square to add up to the sum at the top of the screen. Tap "SUBMIT" after selected. Once all numbers have been used, the squares turn green and you can move on to the next level. If you pass a level, you are given an extension of 60 seconds. Good luck!
 
-∙ Select at least one (1) square to add up to the sum at the top of the screen. Tap "SUBMIT" after selected. 
+Song credits:
+Talking With You by Artificial.Music https://soundcloud.com/artificial-music
+Creative Commons — Attribution 3.0 Unported— CC BY 3.0 
+http://creativecommons.org/licenses/b...
+Music provided by Audio Library https://youtu.be/NAgcAg0pW6w
 
-∙ Once all numbers have been used, the squares turn green and you can move on to the next level. 
-
-∙ If you pass a level, you are given an extension of 60 seconds.
-
-∙ Good luck!</string>
+Radiant Night by Sappheiros
+https://soundcloud.com/sappheirosmusic
+Creative Commons — Attribution 3.0 Unported— CC BY 3.0 
+https://creativecommons.org/licenses/by/3.0/</mutableString>
                             <color key="textColor" red="0.94466012720000003" green="0.837248981" blue="0.16704884170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                         </textView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
@@ -873,7 +866,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IPc-d2-Y1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.082652799785137177" blue="0.079000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.161" blue="0.51800000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
