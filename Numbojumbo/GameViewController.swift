@@ -232,19 +232,19 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! numberCell
         cell.numLabel.text = "\(game.numArray[indexPath.row])"
         cell.numLabel.font = UIFont(name: "Arial", size: cell.frame.height / 3)
+        cell.numLabel.textColor = .white
         
         if submittedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor(red: 0.563, green: 0.790, blue: 0.347, alpha: 1.0)
-            cell.numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.875, green: 0.863, blue: 0.89, alpha: 1.0)
+            cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
         }
         else if selectedCells.contains(indexPath) {
-            cell.backgroundColor = UIColor(red: 0.945, green: 0.837, blue: 0.167, alpha: 1.0)
-            cell.numLabel.textColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.988, green: 0.29, blue: 0.102, alpha: 1.0)
+            cell.layer.borderColor = UIColor.white.cgColor
         } else {
-            cell.backgroundColor = UIColor(red: 0.170, green: 0.511, blue: 0.504, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.988, green: 0.29, blue: 0.102, alpha: 1.0)
             cell.layer.borderColor = UIColor(red: 0.0, green: 0.082, blue: 0.078, alpha: 1.0).cgColor
             cell.layer.borderWidth = 9.0
-            cell.numLabel.textColor = UIColor.white
         }
         
         if !selectedCells.isEmpty {
@@ -328,7 +328,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     present(ac, animated: true, completion: nil)
                 } else {
                     // else you beat the whole game
-                    let ac = UIAlertController(title: "Congrats!", message: "You beat the game! Try again?", preferredStyle: .alert)
+                    let timeRemaining = self.secondsLeft > 9 ? "\(self.minutesLeft):\(self.secondsLeft + 1)" : "\(self.minutesLeft):0\(self.secondsLeft + 1)"
+                    let ac = UIAlertController(title: "Congrats!", message: "You beat the game with \(timeRemaining) remaining! Try again?", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
                         self.reset()
                     })
@@ -408,13 +409,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         musicVolume = CGFloat(sender.value * 100)
         musicVolumeValueLabel.text = String(Int(musicVolume))
         gameAudioPlayer.volume = Float(musicVolume / 100)
-        musicVolumeSwitch.isOn = true
+        musicVolumeSwitch.isOn = musicVolume > 0
     }
     
     @IBAction func soundEffectsVolumeChanged(_ sender: UISlider) {
         effectsVolume = CGFloat(sender.value * 100)
         soundEffectsVolumeValueLabel.text = String(Int(effectsVolume))
-        soundEffectsVolumeSwitch.isOn = true
+        soundEffectsVolumeSwitch.isOn = effectsVolume > 0
     }
     
     @IBAction func toggleMusicVolume(_ sender: UISwitch) {
@@ -422,7 +423,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             musicVolume = CGFloat(0)
             musicVolumeValueLabel.text = "0"
             musicVolumeSlider.value = 0
-            gameAudioPlayer.volume = Float(0)
+            gameAudioPlayer.volume = musicVolumeSlider.value
             musicVolumeSwitch.setOn(false, animated: true)
         } else {
             musicVolumeSwitch.isOn = true
@@ -434,7 +435,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             effectsVolume = CGFloat(0)
             soundEffectsVolumeValueLabel.text = "0"
             soundEffectsVolumeSlider.value = 0
-            //effectsAudioPlayer.volume = Float(0)
             soundEffectsVolumeSwitch.setOn(false, animated: true)
         } else {
             soundEffectsVolumeSwitch.isOn = true

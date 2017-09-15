@@ -14,11 +14,9 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
-    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet var aboutView: UIView!
     @IBOutlet var settingsView: UIView!
-    @IBOutlet var titleLabel: [UILabel]!
     @IBOutlet weak var musicVolumeSwitch: UISwitch!
     @IBOutlet weak var musicVolumeSlider: UISlider!
     @IBOutlet weak var musicVolumeValueLabel: UILabel!
@@ -39,7 +37,6 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
         musicVolume = 10.0
         effectsVolume = 10.0
         
-        setUpTitleView()
         setUpPlayButton()
         setUpSettingsButton()
         setUpAboutButton()
@@ -47,22 +44,6 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         playThemeSong()
-    }
-    
-    func setUpTitleView() {
-        for i in 0..<titleLabel.count {
-            titleLabel[i].translatesAutoresizingMaskIntoConstraints = false
-            titleLabel[i].layer.borderWidth = 3.0
-            titleLabel[i].layer.borderColor = UIColor.white.cgColor
-            if i % 2 == 0 {
-                titleLabel[i].backgroundColor = UIColor(red: 0.563, green: 0.790, blue: 0.347, alpha: 1.0)
-            }
-        }
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.layer.cornerRadius = 20
-        titleView.layer.masksToBounds = true
-        titleView.layer.borderColor = UIColor.white.cgColor
-        titleView.layer.borderWidth = 6.0
     }
     
     func setUpPlayButton() {
@@ -80,7 +61,7 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
         settingsButton.layer.borderColor = UIColor.white.cgColor
         settingsButton.layer.borderWidth = 3.0
         
-        setUpVolumeSettings()
+        setUpSettingsView()
     }
     
     func setUpAboutButton() {
@@ -89,6 +70,21 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
         aboutButton.layer.masksToBounds = true
         aboutButton.layer.borderColor = UIColor.white.cgColor
         aboutButton.layer.borderWidth = 3.0
+        
+        setUpAboutView()
+    }
+    
+    func setUpAboutView() {
+        aboutView.layer.borderColor = UIColor.white.cgColor
+        aboutView.layer.borderWidth = 2.0
+        aboutView.layer.cornerRadius = 10
+    }
+    
+    func setUpSettingsView() {
+        settingsView.layer.borderColor = UIColor.white.cgColor
+        settingsView.layer.borderWidth = 2.0
+        settingsView.layer.cornerRadius = 10
+        setUpVolumeSettings()
     }
     
     func playThemeSong() {
@@ -147,7 +143,7 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
         self.musicVolume = gameVC.musicVolume
         self.effectsVolume = gameVC.effectsVolume
         self.musicVolumeSwitch.isOn = gameVC.musicVolumeSwitch.isOn
-        self.soundEffectsVolumeSwitch.isOn = gameVC.musicVolumeSwitch.isOn        
+        self.soundEffectsVolumeSwitch.isOn = gameVC.soundEffectsVolumeSwitch.isOn
         setUpVolumeSettings()
     }
     
@@ -202,7 +198,7 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
             musicVolume = CGFloat(0)
             musicVolumeValueLabel.text = "0"
             musicVolumeSlider.value = 0
-            mainMenuAudioPlayer.volume = Float(0)
+            mainMenuAudioPlayer.volume = musicVolumeSlider.value
             musicVolumeSwitch.setOn(false, animated: true)
         } else {
             musicVolumeSwitch.isOn = true
@@ -214,7 +210,6 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
             effectsVolume = CGFloat(0)
             soundEffectsVolumeValueLabel.text = "0"
             soundEffectsVolumeSlider.value = 0
-            //effectsAudioPlayer.volume = Float(0)
             soundEffectsVolumeSwitch.setOn(false, animated: true)
         } else {
             soundEffectsVolumeSwitch.isOn = true
