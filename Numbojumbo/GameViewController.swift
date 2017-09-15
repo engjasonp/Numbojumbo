@@ -67,10 +67,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         visualEffectView.effect = nil
 
         playInGameSong()
-        
-        pauseMenuButton.tintColor = UIColor(red: 1.0, green: 0.874, blue: 0.0, alpha: 1.0)
-        pauseMenuView.clipsToBounds = true
-        pauseMenuView.layer.cornerRadius = 5
+
+        setUpPauseMenuView()
+        setUpSettingsView()
         
         reset()
         
@@ -402,7 +401,23 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBAction func settingsButtonClicked(_ sender: UIButton) {
         animateIn(settingsView)
+    }
+    
+    func setUpSettingsView() {
+        settingsView.layer.borderColor = UIColor.white.cgColor
+        settingsView.layer.borderWidth = 2
+        settingsView.layer.cornerRadius = 10
+        settingsView.clipsToBounds = true
         setUpVolumeSettings()
+    }
+    
+    func setUpPauseMenuView() {
+        pauseMenuView.layer.borderColor = UIColor.white.cgColor
+        pauseMenuView.layer.borderWidth = 2
+        pauseMenuView.layer.cornerRadius = 10
+        pauseMenuButton.tintColor = UIColor(red: 1.0, green: 0.874, blue: 0.0, alpha: 1.0)
+        pauseMenuView.clipsToBounds = true
+        pauseMenuView.layer.cornerRadius = 5
     }
     
     @IBAction func musicVolumeChanged(_ sender: UISlider) {

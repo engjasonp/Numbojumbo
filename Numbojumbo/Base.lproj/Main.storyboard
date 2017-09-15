@@ -169,6 +169,11 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJ9-jB-ztI" userLabel="Menu Separator">
+                            <rect key="frame" x="0.0" y="50" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tb3-5N-QWW" userLabel="Settings View">
                             <rect key="frame" x="0.0" y="51" width="300" height="50"/>
                             <subviews>
@@ -183,7 +188,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.13515061140000001" green="0.200225234" blue="0.20058661699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="uC5-f5-m43" secondAttribute="bottom" id="cdk-Ot-nwu"/>
                                 <constraint firstItem="uC5-f5-m43" firstAttribute="top" secondItem="Tb3-5N-QWW" secondAttribute="top" id="hUU-fj-LbS"/>
@@ -191,6 +196,11 @@
                                 <constraint firstAttribute="trailing" secondItem="uC5-f5-m43" secondAttribute="trailing" id="qUn-iK-XV8"/>
                                 <constraint firstItem="uC5-f5-m43" firstAttribute="leading" secondItem="Tb3-5N-QWW" secondAttribute="leading" id="u5z-oT-Tot"/>
                             </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOV-jR-b8g" userLabel="Settings Separator">
+                            <rect key="frame" x="0.0" y="101" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiZ-6j-5Fv" userLabel="Retry View">
                             <rect key="frame" x="0.0" y="102" width="300" height="50"/>
@@ -209,7 +219,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.13515061140000001" green="0.200225234" blue="0.20058661699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="XNL-J3-o4e" secondAttribute="bottom" id="3cg-2t-cyk"/>
                                 <constraint firstItem="XNL-J3-o4e" firstAttribute="leading" secondItem="YiZ-6j-5Fv" secondAttribute="leading" id="FgJ-RQ-N7i"/>
@@ -217,6 +227,11 @@
                                 <constraint firstAttribute="trailing" secondItem="XNL-J3-o4e" secondAttribute="trailing" id="Rzk-pO-uKr"/>
                                 <constraint firstItem="XNL-J3-o4e" firstAttribute="top" secondItem="YiZ-6j-5Fv" secondAttribute="top" id="mpf-RH-Brf"/>
                             </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUH-uj-7cu" userLabel="Retry Separator">
+                            <rect key="frame" x="0.0" y="152" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-vx-0DA" userLabel="Quit View">
                             <rect key="frame" x="0.0" y="153" width="300" height="50"/>
@@ -235,12 +250,17 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.13515061140000001" green="0.200225234" blue="0.20058661699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="b8u-mE-2zF" firstAttribute="top" secondItem="SRM-vx-0DA" secondAttribute="top" id="Amb-R8-sNQ"/>
                                 <constraint firstAttribute="height" constant="50" id="U0h-qa-Vcd"/>
                                 <constraint firstAttribute="bottom" secondItem="b8u-mE-2zF" secondAttribute="bottom" id="fWM-ew-95e"/>
                             </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iQR-DU-wDH" userLabel="Quit Separator">
+                            <rect key="frame" x="0.0" y="203" width="300" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-4y-fMU" userLabel="Resume View">
                             <rect key="frame" x="0.0" y="204" width="300" height="50"/>
@@ -266,7 +286,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.1469391286" green="0.21199238300000001" blue="0.2123552859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Rv6-Ax-paU" firstAttribute="top" secondItem="Jub-ac-Dm5" secondAttribute="top" id="2IE-Cg-rw5"/>
                         <constraint firstItem="YiZ-6j-5Fv" firstAttribute="leading" secondItem="Jub-ac-Dm5" secondAttribute="leading" id="3VY-cP-4zc"/>
@@ -307,12 +327,12 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPz-EX-36a" userLabel="Settings Separator">
                             <rect key="frame" x="0.0" y="50" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601340000002" green="0.48834508659999998" blue="0.91172081230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbY-ZB-lbC" userLabel="Apply Changes Button Separator">
                             <rect key="frame" x="0.0" y="474" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601340000002" green="0.48834508659999998" blue="0.91172081230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dlI-la-FPF" userLabel="Sound Effects Slider">
                             <rect key="frame" x="14" y="125" width="204" height="31"/>
@@ -541,7 +561,7 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-ek-ta0" userLabel="About Title Separator">
                             <rect key="frame" x="0.0" y="50" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tO-mP4" userLabel="Directions View">
                             <rect key="frame" x="0.0" y="50" width="300" height="425"/>
@@ -566,7 +586,7 @@ https://creativecommons.org/licenses/by/3.0/</string>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
                             <rect key="frame" x="0.0" y="474" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601337432861" green="0.48834508657455444" blue="0.91172081232070923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
                             <rect key="frame" x="0.0" y="474" width="300" height="46"/>
@@ -603,12 +623,12 @@ https://creativecommons.org/licenses/by/3.0/</string>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXf-Z2-4Ge" userLabel="Settings Separator">
                             <rect key="frame" x="0.0" y="50" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601340000002" green="0.48834508659999998" blue="0.91172081230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNb-vv-ga2" userLabel="Apply Changes Button Separator">
                             <rect key="frame" x="0.0" y="474" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.49802601340000002" green="0.48834508659999998" blue="0.91172081230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-1q-cNq" userLabel="Sound Effects Slider">
                             <rect key="frame" x="14" y="125" width="204" height="31"/>
