@@ -17,13 +17,13 @@
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="textView" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8m6-mh-29g">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="0.1469391286" green="0.21199238300000001" blue="0.2123552859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.94466012720000003" green="0.837248981" blue="0.16704884170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
-            <color key="backgroundColor" red="0.1115625277" green="0.17669034" blue="0.17704784870000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8m6-mh-29g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1P5-ut-gDC"/>
                 <constraint firstAttribute="trailing" secondItem="8m6-mh-29g" secondAttribute="trailing" id="LDN-AM-QSM"/>

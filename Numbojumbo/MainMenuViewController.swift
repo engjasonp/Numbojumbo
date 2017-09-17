@@ -33,6 +33,7 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     
     var effect: UIVisualEffect!
     var mainMenuAudioPlayer: AVAudioPlayer!
+    var effectsAudioPlayer: AVAudioPlayer!
     var musicVolume: CGFloat = 0.0
     var effectsVolume: CGFloat = 0.0
     
@@ -62,7 +63,7 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     
     func createSlides() -> [Slide] {
         let slide1: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.textView.text = "• Try to beat the game before the time runs out!\n•Select at least one (1) square to add up to the sum at the top of the screen. \n• Tap \"SUBMIT\" after selected. \n• Once all numbers have been used, the squares turn clear and you can move on to the next level. \n• If you pass a level, you are given an extension of 60 seconds. \n• Good luck!"
+        slide1.textView.text = "• Try to beat the game before the time runs out!\n\n•Select at least one (1) square to add up to the sum at the top of the screen. \n\n• Tap \"SUBMIT\" after selected. \n\n• You can move on to the next level once all squares are cleared. \n\n• If you pass a level, you are given an extension of 60 seconds. \n\n• Good luck!"
         
         let slide2: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.textView.text = "Song credits: \n\nTalking With You by Artificial.Music https://soundcloud.com/artificial-music \nCreative Commons — Attribution 3.0 Unported— CC BY 3.0 \nhttps://creativecommons.org/licenses/by/3.0/ \nMusic provided by Audio Library https://youtu.be/NAgcAg0pW6w \n\nRadiant Night by Sappheiros \nhttps://soundcloud.com/sappheirosmusic \nCreative Commons — Attribution 3.0 Unported— CC BY 3.0 \nhttps://creativecommons.org/licenses/by/3.0/"
@@ -154,6 +155,26 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
         }
     }
     
+    func playSoundEffect(_ title: String, format: String) {
+        guard let url = Bundle.main.url(forResource: title, withExtension: format) else {
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            effectsAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let effectsAudioPlayer = effectsAudioPlayer else {
+                return
+            }
+            effectsAudioPlayer.volume = Float(effectsVolume / 100)
+            effectsAudioPlayer.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func setUpVolumeSettings() {
         musicVolumeSlider.value = Float(musicVolume / 100)
         musicVolumeValueLabel.text = String(Int(musicVolumeSlider.value * 100))
@@ -206,22 +227,27 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        playSoundEffect("blop", format: "mp3")
         mainMenuAudioPlayer.stop()
     }
     
     @IBAction func returnToMainMenuScreen(_ sender: UIButton) {
+        playSoundEffect("blop", format: "mp3")
         animateOut(sender.superview!)
     }
     
     @IBAction func aboutButtonTapped(_ sender: UIButton) {
+        playSoundEffect("blop", format: "mp3")
         animateIn(aboutView)
     }
     
     @IBAction func applySettingsChanges(_ sender: UIButton) {
+        playSoundEffect("blop", format: "mp3")
         animateOut(sender.superview!)
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        playSoundEffect("blop", format: "mp3")
         animateIn(settingsView)
     }
     
