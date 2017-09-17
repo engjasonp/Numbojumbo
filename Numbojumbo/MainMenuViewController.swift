@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainMenuViewController: UIViewController, GameVCDelegate {
+class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
@@ -24,6 +24,13 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
     @IBOutlet weak var soundEffectsVolumeSlider: UISlider!
     @IBOutlet weak var soundEffectsVolumeValueLabel: UILabel!
     
+    @IBOutlet weak var aboutScrollView: UIScrollView!
+    @IBOutlet weak var howToPlayLabel: UILabel!
+    @IBOutlet weak var aboutTitleSeparatorView: UIView!
+    @IBOutlet weak var okButtonSeparatorView: UIView!
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var effect: UIVisualEffect!
     var mainMenuAudioPlayer: AVAudioPlayer!
     var musicVolume: CGFloat = 0.0
@@ -31,6 +38,13 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        aboutScrollView.delegate = self
+        let slides: [Slide] = createSlides()
+        setupSlideScrollView(slides: slides)
+        pageControl.numberOfPages = slides.count
+        pageControl.currentPage = 0
+        aboutView.bringSubview(toFront: pageControl)
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
@@ -44,6 +58,37 @@ class MainMenuViewController: UIViewController, GameVCDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         playThemeSong()
+    }
+    
+    func createSlides() -> [Slide] {
+        let slide1: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide1.textView.text = "• Try to beat the game before the time runs out!\n•Select at least one (1) square to add up to the sum at the top of the screen. \n• Tap \"SUBMIT\" after selected. \n• Once all numbers have been used, the squares turn clear and you can move on to the next level. \n• If you pass a level, you are given an extension of 60 seconds. \n• Good luck!"
+        
+        let slide2: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide2.textView.text = "Song credits: \n\nTalking With You by Artificial.Music https://soundcloud.com/artificial-music \nCreative Commons — Attribution 3.0 Unported— CC BY 3.0 \nhttps://creativecommons.org/licenses/by/3.0/ \nMusic provided by Audio Library https://youtu.be/NAgcAg0pW6w \n\nRadiant Night by Sappheiros \nhttps://soundcloud.com/sappheirosmusic \nCreative Commons — Attribution 3.0 Unported— CC BY 3.0 \nhttps://creativecommons.org/licenses/by/3.0/"
+        
+        return [slide1, slide2]
+    }
+    
+    func setupSlideScrollView(slides:[Slide]) {
+        
+        let scrollViewHeight = aboutView.frame.height - (howToPlayLabel.frame.height + aboutTitleSeparatorView.frame.height + okButtonSeparatorView.frame.height + okButton.frame.height)
+        
+        aboutScrollView.frame = CGRect(x: aboutView.frame.minX, y: aboutTitleSeparatorView.frame.maxY, width: aboutView.frame.width, height: scrollViewHeight)
+        aboutScrollView.contentSize = CGSize(width: aboutView.frame.width * CGFloat(slides.count), height: scrollViewHeight)
+        aboutScrollView.isPagingEnabled = true
+        
+        for i in 0 ..< slides.count {
+            slides[i].frame = CGRect(x: aboutView.frame.width * CGFloat(i), y: 0, width: aboutView.frame.width, height: scrollViewHeight)
+            aboutScrollView.addSubview(slides[i])
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let pageIndex = round(scrollView.contentOffset.x/aboutView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+        
     }
     
     func setUpPlayButton() {

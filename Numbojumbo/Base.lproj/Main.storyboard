@@ -531,10 +531,16 @@
                     <navigationItem key="navigationItem" id="BKO-Vf-nx8"/>
                     <connections>
                         <outlet property="aboutButton" destination="K6B-6c-PdL" id="ubd-EI-RYN"/>
+                        <outlet property="aboutScrollView" destination="ucO-A0-IpW" id="zip-hp-bOU"/>
+                        <outlet property="aboutTitleSeparatorView" destination="zbI-ek-ta0" id="NW6-P2-gk3"/>
                         <outlet property="aboutView" destination="KdZ-jc-bQF" id="hj6-mB-i9J"/>
+                        <outlet property="howToPlayLabel" destination="Ybh-Hq-w6o" id="6NW-Pa-hjX"/>
                         <outlet property="musicVolumeSlider" destination="nr9-1q-cNq" id="peG-CN-aMy"/>
                         <outlet property="musicVolumeSwitch" destination="2cI-ng-s6l" id="Yi4-wg-be9"/>
                         <outlet property="musicVolumeValueLabel" destination="OsO-dT-4YP" id="XBn-4g-JWS"/>
+                        <outlet property="okButton" destination="9WP-6m-CtB" id="vkz-gr-pn0"/>
+                        <outlet property="okButtonSeparatorView" destination="bco-45-BV5" id="pRk-vQ-oG0"/>
+                        <outlet property="pageControl" destination="ggG-0P-ng4" id="hnq-cn-iTh"/>
                         <outlet property="playButton" destination="dKm-K2-X6q" id="2VE-zp-H8X"/>
                         <outlet property="settingsButton" destination="fh0-tR-5sd" id="Rvm-Ij-jjG"/>
                         <outlet property="settingsView" destination="HqL-2g-vEp" id="ICf-Cl-xOV"/>
@@ -558,39 +564,34 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-ek-ta0" userLabel="About Title Separator">
-                            <rect key="frame" x="0.0" y="50" width="300" height="1"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-ek-ta0" userLabel="About Title Separator">
+                            <rect key="frame" x="0.0" y="53" width="300" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="v71-1c-EyP"/>
+                            </constraints>
                         </view>
-                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR5-tO-mP4" userLabel="Directions View">
-                            <rect key="frame" x="0.0" y="50" width="300" height="425"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <string key="text">Try to beat the game before the time runs out!  Select at least one (1) square to add up to the sum at the top of the screen. Tap "SUBMIT" after selected. Once all numbers have been used, the squares turn clear and you can move on to the next level. If you pass a level, you are given an extension of 60 seconds. Good luck!
-
-Song credits:
-Talking With You by Artificial.Music https://soundcloud.com/artificial-music
-Creative Commons — Attribution 3.0 Unported— CC BY 3.0 
-http://creativecommons.org/licenses/b...
-Music provided by Audio Library https://youtu.be/NAgcAg0pW6w
-
-Radiant Night by Sappheiros
-https://soundcloud.com/sappheirosmusic
-Creative Commons — Attribution 3.0 Unported— CC BY 3.0 
-https://creativecommons.org/licenses/by/3.0/</string>
-                            <color key="textColor" red="0.94466012720000003" green="0.837248981" blue="0.16704884170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
-                        </textView>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
-                            <rect key="frame" x="0.0" y="474" width="300" height="1"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-0P-ng4">
+                            <rect key="frame" x="80" y="421" width="140" height="37"/>
+                        </pageControl>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucO-A0-IpW">
+                            <rect key="frame" x="0.0" y="54" width="300" height="423"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="423" id="WCu-6J-zYZ"/>
+                            </constraints>
+                        </scrollView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
+                            <rect key="frame" x="0.0" y="478" width="300" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Hrb-l5-PXC"/>
+                            </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
-                            <rect key="frame" x="0.0" y="474" width="300" height="46"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
+                            <rect key="frame" x="0.0" y="478" width="300" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="rMF-LX-daM"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                             <state key="normal" title="OK">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -602,9 +603,24 @@ https://creativecommons.org/licenses/by/3.0/</string>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="9WP-6m-CtB" firstAttribute="width" secondItem="KdZ-jc-bQF" secondAttribute="width" id="0oI-Xa-hIk"/>
+                        <constraint firstItem="bco-45-BV5" firstAttribute="centerX" secondItem="KdZ-jc-bQF" secondAttribute="centerX" id="5Z8-f4-EpM"/>
+                        <constraint firstAttribute="trailing" secondItem="ggG-0P-ng4" secondAttribute="trailing" constant="80" id="5wf-dm-nV4"/>
+                        <constraint firstItem="ucO-A0-IpW" firstAttribute="width" secondItem="KdZ-jc-bQF" secondAttribute="width" id="65h-QJ-ouE"/>
                         <constraint firstItem="Ybh-Hq-w6o" firstAttribute="leading" secondItem="KdZ-jc-bQF" secondAttribute="leading" id="8CJ-R9-Kcm"/>
+                        <constraint firstItem="bco-45-BV5" firstAttribute="top" secondItem="ucO-A0-IpW" secondAttribute="bottom" constant="1" id="ChH-HP-xFm"/>
                         <constraint firstAttribute="trailing" secondItem="Ybh-Hq-w6o" secondAttribute="trailing" id="EI2-ju-0Go"/>
+                        <constraint firstItem="ucO-A0-IpW" firstAttribute="top" secondItem="zbI-ek-ta0" secondAttribute="bottom" id="QBr-sl-Um1"/>
                         <constraint firstItem="Ybh-Hq-w6o" firstAttribute="top" secondItem="KdZ-jc-bQF" secondAttribute="top" id="eO8-k9-zqU"/>
+                        <constraint firstItem="9WP-6m-CtB" firstAttribute="top" secondItem="ggG-0P-ng4" secondAttribute="bottom" constant="20" id="fF2-XP-8gF"/>
+                        <constraint firstItem="9WP-6m-CtB" firstAttribute="top" secondItem="bco-45-BV5" secondAttribute="bottom" constant="-1" id="jkS-pA-Tno"/>
+                        <constraint firstItem="bco-45-BV5" firstAttribute="width" secondItem="KdZ-jc-bQF" secondAttribute="width" id="l3J-SV-sHh"/>
+                        <constraint firstItem="zbI-ek-ta0" firstAttribute="top" secondItem="Ybh-Hq-w6o" secondAttribute="bottom" constant="1" id="mHM-lH-1rV"/>
+                        <constraint firstItem="zbI-ek-ta0" firstAttribute="centerX" secondItem="KdZ-jc-bQF" secondAttribute="centerX" id="mMz-Wb-kuT"/>
+                        <constraint firstItem="ggG-0P-ng4" firstAttribute="leading" secondItem="KdZ-jc-bQF" secondAttribute="leading" constant="80" id="pm9-wy-kE0"/>
+                        <constraint firstItem="ucO-A0-IpW" firstAttribute="centerX" secondItem="KdZ-jc-bQF" secondAttribute="centerX" id="qRF-fw-ebP"/>
+                        <constraint firstItem="9WP-6m-CtB" firstAttribute="centerX" secondItem="KdZ-jc-bQF" secondAttribute="centerX" id="vPB-GY-BNL"/>
+                        <constraint firstItem="zbI-ek-ta0" firstAttribute="width" secondItem="KdZ-jc-bQF" secondAttribute="width" id="zVC-ND-nxP"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="HqL-2g-vEp" userLabel="Settings View">
@@ -741,7 +757,7 @@ https://creativecommons.org/licenses/by/3.0/</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FQY-BS-py1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IPc-d2-Y1d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IPc-d2-Y1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
