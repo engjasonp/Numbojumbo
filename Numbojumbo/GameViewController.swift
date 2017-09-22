@@ -13,6 +13,7 @@ protocol GameVCDelegate: class {
     // Helps to pass the volume values from MainMenuViewController to GameViewController
     func gameViewControllerDidFinish (_ gameVC: GameViewController)
 }
+
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var gameContainerView: UIView!

@@ -535,6 +535,7 @@
                         <outlet property="aboutScrollView" destination="ucO-A0-IpW" id="zip-hp-bOU"/>
                         <outlet property="aboutTitleSeparatorView" destination="zbI-ek-ta0" id="NW6-P2-gk3"/>
                         <outlet property="aboutView" destination="KdZ-jc-bQF" id="hj6-mB-i9J"/>
+                        <outlet property="applyChangesButton" destination="UiQ-wb-TXo" id="wPb-Zu-LGY"/>
                         <outlet property="howToPlayLabel" destination="Ybh-Hq-w6o" id="6NW-Pa-hjX"/>
                         <outlet property="musicVolumeSlider" destination="nr9-1q-cNq" id="peG-CN-aMy"/>
                         <outlet property="musicVolumeSwitch" destination="2cI-ng-s6l" id="Yi4-wg-be9"/>
@@ -572,28 +573,25 @@
                                 <constraint firstAttribute="height" constant="1" id="v71-1c-EyP"/>
                             </constraints>
                         </view>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-0P-ng4">
-                            <rect key="frame" x="80" y="421" width="140" height="37"/>
-                        </pageControl>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucO-A0-IpW">
-                            <rect key="frame" x="0.0" y="54" width="300" height="423"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="423" id="WCu-6J-zYZ"/>
-                            </constraints>
-                        </scrollView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bco-45-BV5" userLabel="OK Button Separator">
-                            <rect key="frame" x="0.0" y="478" width="300" height="1"/>
+                            <rect key="frame" x="0.0" y="474" width="300" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Hrb-l5-PXC"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
-                            <rect key="frame" x="0.0" y="478" width="300" height="46"/>
-                            <color key="backgroundColor" red="0.1469391286" green="0.21199238300000001" blue="0.2123552859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-0P-ng4">
+                            <rect key="frame" x="80" y="417" width="140" height="37"/>
+                        </pageControl>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucO-A0-IpW">
+                            <rect key="frame" x="0.0" y="54" width="300" height="419"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="46" id="rMF-LX-daM"/>
+                                <constraint firstAttribute="height" constant="419" id="WCu-6J-zYZ"/>
                             </constraints>
+                        </scrollView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6m-CtB">
+                            <rect key="frame" x="0.0" y="474" width="300" height="46"/>
+                            <color key="backgroundColor" red="0.1469391286" green="0.21199238300000001" blue="0.2123552859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                             <state key="normal" title="OK">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -612,6 +610,7 @@
                         <constraint firstItem="Ybh-Hq-w6o" firstAttribute="leading" secondItem="KdZ-jc-bQF" secondAttribute="leading" id="8CJ-R9-Kcm"/>
                         <constraint firstItem="bco-45-BV5" firstAttribute="top" secondItem="ucO-A0-IpW" secondAttribute="bottom" constant="1" id="ChH-HP-xFm"/>
                         <constraint firstAttribute="trailing" secondItem="Ybh-Hq-w6o" secondAttribute="trailing" id="EI2-ju-0Go"/>
+                        <constraint firstAttribute="bottom" secondItem="9WP-6m-CtB" secondAttribute="bottom" id="GtZ-lU-VxX"/>
                         <constraint firstItem="ucO-A0-IpW" firstAttribute="top" secondItem="zbI-ek-ta0" secondAttribute="bottom" id="QBr-sl-Um1"/>
                         <constraint firstItem="Ybh-Hq-w6o" firstAttribute="top" secondItem="KdZ-jc-bQF" secondAttribute="top" id="eO8-k9-zqU"/>
                         <constraint firstItem="9WP-6m-CtB" firstAttribute="top" secondItem="ggG-0P-ng4" secondAttribute="bottom" constant="20" id="fF2-XP-8gF"/>
@@ -639,7 +638,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXf-Z2-4Ge" userLabel="Settings Separator">
-                            <rect key="frame" x="0.0" y="50" width="300" height="1"/>
+                            <rect key="frame" x="0.0" y="52" width="300" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="textView" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8m6-mh-29g">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="8" y="0.0" width="359" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" red="0.94466012720000003" green="0.837248981" blue="0.16704884170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -25,8 +25,8 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="8m6-mh-29g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1P5-ut-gDC"/>
-                <constraint firstAttribute="trailing" secondItem="8m6-mh-29g" secondAttribute="trailing" id="LDN-AM-QSM"/>
+                <constraint firstItem="8m6-mh-29g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="1P5-ut-gDC"/>
+                <constraint firstAttribute="trailing" secondItem="8m6-mh-29g" secondAttribute="trailing" constant="8" id="LDN-AM-QSM"/>
                 <constraint firstItem="8m6-mh-29g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r5k-SR-Oks"/>
                 <constraint firstAttribute="bottom" secondItem="8m6-mh-29g" secondAttribute="bottom" id="zt1-Bx-LLv"/>
             </constraints>

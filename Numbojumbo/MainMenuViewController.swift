@@ -23,12 +23,12 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     @IBOutlet weak var soundEffectsVolumeSwitch: UISwitch!
     @IBOutlet weak var soundEffectsVolumeSlider: UISlider!
     @IBOutlet weak var soundEffectsVolumeValueLabel: UILabel!
-    
     @IBOutlet weak var aboutScrollView: UIScrollView!
     @IBOutlet weak var howToPlayLabel: UILabel!
     @IBOutlet weak var aboutTitleSeparatorView: UIView!
     @IBOutlet weak var okButtonSeparatorView: UIView!
     @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var applyChangesButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     
     var effect: UIVisualEffect!
@@ -124,6 +124,7 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
         aboutView.layer.borderColor = UIColor.white.cgColor
         aboutView.layer.borderWidth = 2.0
         aboutView.layer.cornerRadius = 10
+        okButton.layer.cornerRadius = 10
     }
     
     func setUpSettingsView() {
@@ -131,6 +132,8 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
         settingsView.layer.borderWidth = 2.0
         settingsView.layer.cornerRadius = 10
         setUpVolumeSettings()
+        
+        applyChangesButton.layer.cornerRadius = 10
     }
     
     func playThemeSong() {
