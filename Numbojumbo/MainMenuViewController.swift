@@ -37,8 +37,12 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     var musicVolume: CGFloat = 0.0
     var effectsVolume: CGFloat = 0.0
     
+    var navigationBarHeight: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationBarHeight = self.navigationController!.navigationBar.frame.height
         
         aboutScrollView.delegate = self
         let slides: [Slide] = createSlides()
@@ -187,7 +191,7 @@ class MainMenuViewController: UIViewController, UIScrollViewDelegate, GameVCDele
     }
     
     func animateIn(_ popUpView: UIView) {
-        popUpView.center = self.view.center
+        popUpView.center = CGPoint(x: self.view.center.x, y: (self.view.frame.height + navigationBarHeight)/2)
         popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         popUpView.alpha = 0
         self.view.addSubview(popUpView)

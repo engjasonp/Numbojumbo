@@ -56,6 +56,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     var effectsAudioPlayer: AVAudioPlayer!
     var musicVolume: CGFloat = 0.0
     var effectsVolume: CGFloat = 0.0
+    var navigationBarHeight: CGFloat = 0.0
     
     var delegate: GameVCDelegate?
     
@@ -63,6 +64,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         
         self.edgesForExtendedLayout = []
+        
+        navigationBarHeight = self.navigationController!.navigationBar.frame.height
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
@@ -188,7 +191,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func animateIn(_ popUpView: UIView) {
-        popUpView.center = self.gameContainerView.center
+        popUpView.center = CGPoint(x: self.view.center.x, y: (self.gameContainerView.frame.height + navigationBarHeight)/2)
         popUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         popUpView.alpha = 0
         self.view.addSubview(popUpView)
