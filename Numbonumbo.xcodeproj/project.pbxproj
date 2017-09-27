@@ -365,7 +365,7 @@
 				DEVELOPMENT_TEAM = GE7Q79ULPB;
 				INFOPLIST_FILE = Numbojumbo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engjason.Numbojumbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engjason.Numbonumbo;
 				PRODUCT_NAME = Numbonumbo;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
@@ -379,7 +379,7 @@
 				DEVELOPMENT_TEAM = GE7Q79ULPB;
 				INFOPLIST_FILE = Numbojumbo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engjason.Numbojumbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engjason.Numbonumbo;
 				PRODUCT_NAME = Numbonumbo;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
